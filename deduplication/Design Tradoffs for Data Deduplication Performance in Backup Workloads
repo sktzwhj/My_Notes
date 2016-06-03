@@ -1,0 +1,43 @@
+Author: Min Fu
+Published in: FAST'15
+Date: 03/06/2016
+
+This paper is an extensive study of the tradeoffs in designing the deduplication performance in backup workloads. 
+Their framework is open-source. https://github.com/fomy/destor
+
+They mention that typical deduplication system has three parts. (1) fingerprint index (2) recipe store (3) container store. 
+
+1. fingerprint index 
+the simplest finger index is key-value store. (key, vlaue) -> (fingerprint, index to chunk)
+
+the categories of: ED (Exact Dedup), ND (Near-exact Dedup), LL (Logical Locality), PL (Physical Locality)
+
+ED (Exact Dedup), ND (Near-exact Dedup)
+generally, near-exact dedup costs more. 
+
+LL (Logical Locality), PL (Physical Locality)
+
+The difference between LL and PL is that for the later, the recipe store stores the container id as values, while for LL, the segment id is stored in 
+values. 
+Although physical locality is an effective approximation of logical locality. However, as the system ages, there would be fragmentation. (How to understand
+this)
+
+The segmenting method,
+fixed-size or content-defined. 
+
+Sampling method, 
+uniform, random, minimum
+(Why we can compare the similarity by comparing the similarity of fingerprints?)
+
+Segment selection,
+top-K
+
+Segement prefetching,
+segement prefetching can partially alleviate the problem caused by boundary change. (i.e. because even boundary has changed, we can still read the adjacent
+data in the cache)
+
+Key-Value mapping relationship
+actually, one key can map to several values, that is, maybe the feature is shared by several segement. (i.e. different versions of a segement, corruputed data
+is restored or recovered to old version.)
+
+
