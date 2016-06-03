@@ -1,0 +1,15 @@
+This doc is a summary of the featrues of SSD devices. 
+Date:03/06/2016
+
+FTL (Flash Translation Layer)
+
+The feature of SSD is that 
+1. the NAND flash cannot be written randomly like memory. Before writting to a certain page, the content of that page needs to be deleted at first. 
+   So if SSD still follows this rule, then it would be very hard to use. Because the most time would be consumed on deleting. The principle of SSD is
+   very similar to log-structured storage. So the new write do not need to write to the former page, it can just be written to a new one. The FTL can 
+   map this new one to the that data. 
+   
+2. Why garbage collection
+   Since the page is never updated by a in-place-update way, when a page is re-mapped, the old one would be expired. So we need garbage collection. 
+   However, since the erasure needs to be done at the block level, the GC needs to do some data migration during the collection. This would have some 
+   negative impact on the global write performance. 
