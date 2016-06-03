@@ -2,6 +2,8 @@ Authors: JOAO PAULO, etc.
 Published in: ACM Computing Surveys.
 Date: 03/06/2016
 
+Dr Chen Wang's perspective about deduplication research. (compress & query)
+
 The classification of criteria for deduplication, 
 1. Granularity. file level, fixed block (boundary-shifting problem), variable-sized chunks
 2. Locality. Duplicate chunks are expected to appear several times in a short time window. 
@@ -13,3 +15,46 @@ The classification of criteria for deduplication,
    data. After the reference number is zero, the space of this data can be garbage collected. 
 6. Scope. The deduplication can be done not only on local but also distributed scope. In this case, there would be some problems on metadata. Say centralized 
    or decentralized. 
+   
+
+Storage type, 
+Backup and archival storage
+1. index leads to some index lookup bottlenck. There are some existing work, (1) using SSD to store the index. (2)using memory
+   to store the index. (3) RAM based bloom filter. (4) Extracting the spatial locality, load the hot signatures in the memory to gain more deduplication 
+   gain. However, this kind of locality does not exist in some workloads.
+2. Distributed Deduplication. 
+   convergent encryption.  
+   the deduplication for encrypted data. [Pastiche]
+   DHT can be used to index chunk signatures. 
+3. Local deduplication in distributed infrastructures.
+   global indices and the consequent bottlnecks can be avoided by parallel local deduplications. 
+   aliasing dedup and delta dedup : can be used together in a hierarchical way. 
+4. file systems for archive and backup 
+
+Primary Storage 
+1. The percentage of duplicate data is usually lower than the one found for backup storage. 
+2. Offline storage has some problems including introducing some more I/Os. So inline dedup is introduced. 
+
+Random Access Memory
+1. duplicate pages are mapped to only one page. 
+2. Can be classified into non-intrusive dedup and intrusive dedup.
+3. About copy on write... when the memory is re-write, it should be copied in case the original data would be overwritten. That is just why we need to 
+   maintain the reference number. 
+   
+Solid-State Drives
+1. The FTL-layer brings some new challenges and advantages. Since there is a FTL, the cost for sharing a page is relatively reduced. 
+2. The garbage collection mechanism of SSD can be modified to simultaneously support the reference management. 
+3. Conception about garbage collction in SSD (see Hardware:SSD features)
+4. It costs a lot to build hashing unit by FTL. Existing methods add some new hardware unit in SSD. 
+5. SSD can gain more than only deduplication (i.e. lifespan...)
+
+Current trends and open issues,
+1. For archival and backup storage, the throughput is more important
+2. For primary and memory dedup, the latency is also very important. 
+3. The potential research directions can be: (1) fault tolerance and security for dedup systems; (2) dedup while protecting the data of users in cloud
+   scenario. (3) security issues in RAM deduplication. 
+
+Discussed Questions,
+1. What is the content of the indices
+
+  
