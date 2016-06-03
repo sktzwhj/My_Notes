@@ -1,0 +1,15 @@
+Authors: JOAO PAULO, etc. 
+Published in: ACM Computing Surveys.
+Date: 03/06/2016
+
+The classification of criteria for deduplication, 
+1. Granularity. file level, fixed block (boundary-shifting problem), variable-sized chunks
+2. Locality. Duplicate chunks are expected to appear several times in a short time window. 
+3. Timing. When detection and removal of duplicate data are performed. (inline & offline)
+4. Indexing.  For instance, Rabin fingerprints (can be calculated in linear time.) As the indexing data is large, secondary indexing and the similarity 
+   is introduced to solve this. 
+5. delta-encoding algorithm saves the space in chunks that do not have the exact same content. 
+   garbage collection. beacause after using the deduplication technuques, the duplicate data are only stored once. Then all the references refer to this 
+   data. After the reference number is zero, the space of this data can be garbage collected. 
+6. Scope. The deduplication can be done not only on local but also distributed scope. In this case, there would be some problems on metadata. Say centralized 
+   or decentralized. 
