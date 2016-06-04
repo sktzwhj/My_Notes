@@ -2,4 +2,11 @@ Author: Zhuan Chen from U of Rochester
 Published in: FAST'16
 Date: 04/06/2016
 
+The metadata mentioned here is like logical to physical block mapping, physical block reference counters, block fingerprints. 
 
+The key idea of this paper is to use reorder rather than certain hardware or log to achieve the consistency of metadata. 
+
+Traditional methods to keep the consistency between data and their metadata:
+
+journaling, easy to understand, like ext file systems.  
+shadowing, use a copy-on-write fashion, and use atomic modifying of the file index to point the file to the new version. 
