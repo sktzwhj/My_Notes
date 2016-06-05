@@ -1,0 +1,9 @@
+//This doc is a notes for the basic concepts of file systems.
+
+
+What is superblock?
+
+Superblock is the most basic information about a file system. i.e., type, size, inode numbers, block numbers...
+Normally, there would be several copies of superblock in a file system. So in dedup systems, if dedup these critical info, the relaibility might
+be harmed. 
+
