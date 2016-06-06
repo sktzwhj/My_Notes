@@ -8,3 +8,14 @@ The knowledge need to be reviewed.
 
 Big omega notation. 
 
+Homework 5 Q2
+
+be aware of the height and depth of tree. 
+
+Homework 5 Q4
+
+Note that the question is that the descendants diff is no more than 5, not the height...
+
+Homework 5 Q5
+
+Do not forget to reset the visit flag of nodes. 
