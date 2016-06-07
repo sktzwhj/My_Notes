@@ -1,0 +1,35 @@
+First of all, my understanding of the main ideas of the papers.
+(1) For the old ASPLOS paper about compression on LFS. It did give me some basic ideas about the way to compress data. 
+Interesting thing is that due to the overhead, compression can not be easily adapted to all kinds of file systems. In
+that case, LFS is a choice which makes things easier.
+(2) For the FAST'16 paper from Sonam Mandal, I think the idea is simple and straightforward. Block-level dedup is easier 
+to conduct but lack of many context info. Compared to introspection, giving hints is cheaper and effective.
+(3) For the FAST'14 paper from Xing et al., I regard reordering as a method to make more files in the window slide since 
+the size of the window is limited. Of course, similar things in  the window slide lead to better compression.
+
+Then about the metadata management in these work, my understanding is like this,
+(1)  The metadata includes, the fingerprints index, the mapping between logical block number and physical block number, etc.
+(2)  Basic ways to accelerate the performance of accessing these metadata is caching.
+
+The metadata in these systems is not the same as metadata in file systems. However, metadata in file systems has some 
+characteristics which would guide the dedup or compression systems. For instance, (1) over half of metadata in fs is unique so 
+that we do not need to dedup them. (2) some metadata like superblock is duplicated originally, so it is harmful to dedup 
+them. (3) the metadata updates are more frequent, so it is wise to separate them from dedup systems. 
+
+The ideal solution for dedup or compression:
+(1) Less overhead in critical path (read/write operation). So the work needed to do this can be summarized like 
+    a. how to avoid useless index checking for write operations. 
+    b. how to improve the performance of read operations without too much index querying (mainly the recipe which is used 
+    to restore data, I regard this as the mapping of logical data and compressed data). 
+    
+Some easy work we can do?
+(1) I think finding out more interesting hints can be a work. i.e., files with different size contribute very differently to 
+the dedup ratio, it is good to dedup middle-size data in order to gain larger dedup ratio. 
+
+About your summary. 
+I do not quite understand this - "Making use of the changed data layout to facilitate data retrieval for typical queries
+and optimize data retrieval latency."
+In my understanding, after compression, the data layout is very bad for fast reading. i.e., the data blocks are not continous.
+
+It seems the routing you mentioned is just like the reordering concept in the FAST paper. Am I right?
+
