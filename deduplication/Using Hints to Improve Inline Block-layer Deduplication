@@ -1,0 +1,42 @@
+Author: Sonam Mandal
+published in FAST'16
+Date: 07/06/2016
+
+
+
+Some context inforamtion (or we can say metadata) is lost in block layer. Those data can be used to improve the dedup. 
+
+So there are two kinds of hints introduced in this paper. (One is NoDedup and the other is Prefetch)
+
+NoDup indicates that it is not likely that we would gain beneifts from the dedup and Prefetch helps caching the hot hash
+in the memory so that the dedup would be faster. 
+
+a typical block layer request often only contains the operation type, size and offset. The infomration (e.g., the diff 
+between data and metadata is missing.)
+
+This would cause two problems: (1) some data is originally duplicated. for instance, the superblock of fs. (2) some data is 
+not duplicated at all so that it is a waste ot check them. 
+
+Two methods for context recovery: (1) introspection which relies on the block-layer intelligence. (2) hinting which asks 
+higher levels to provide some information. 
+
+Dmdedup. this is an open-source block-layer deduplication system. 
+the metadata in dmdedup is stored in separate block device. the metadata can be (e.g., the hash index)
+
+The hints used in this paper: 
+(1) bypass dedup. some writes are known to be unique. (e.g., for me, the one makes sense can be compressed data )
+and another thing is that the metadata in file systems is often unique. but, for jounaling file system like ext3 and ext4, 
+the duplicates might be more due to the writing to jounal. 
+metadata writes are more important to the overall system perfomrance than data because the former are often sync. In this 
+case, adding more dedup program may increase the latency. 
+
+(2) prefetch hashes.  when the system knows what data would be written, it can prefetch the corresponding hashes from the 
+index. interesting hints can be clustering (same file types... in the same dir, etc. ). 
+
+Discussed questions: 
+1. I guess the mapping between logical block numbers and physical block numbers is also a metadata. 
+2. it seems we can find out more interesting hints. (e.g., there is some saying that middle-size files contribute to the 
+largest dedup ratio. I read that from the statistical analysis of a SC paper)
+
+
+[intersting statistical data for reference] 12 - 28% of total writes are to write metadata .

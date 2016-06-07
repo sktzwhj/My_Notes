@@ -2,3 +2,28 @@ The big picture of my topic could be like this.
 
 The metadata management of dedup system is a challenge. Since there might be a lot of features. In this case, it can be a bottleneck. So it is important 
 to find some methods to efficiently manage the metadata. 
+
+an important thing is the routing of the data. (recipe?)
+
+Alternatives for achieving better compressibility. 
+(1) migratory v traditional compression 
+mc has larger window size to let find more potential similarity 
+(2) delta compression
+encode A' ralative to a similar object A 
+
+Approach of mc
+
+In dedup or compression systems, a method to restore the original data is necessary.
+
+Similarity detection with super-features. 
+(this is widely used in identify similar web pages, files and chunks within files).
+
+each time a file is written, its N SF features would be looked up in N hash tables. 
+
+In 3.1.1, the authors mention 'large file has larger fingerprints thus larger metadata'
+
+The recipes used in mc is migrate recipe and restore recipe. 
+
+What are the SFs?
+
+Overall, the overhead introduced is not too large and the improvement of the compressibility is quite considerable. 

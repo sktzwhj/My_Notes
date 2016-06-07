@@ -19,3 +19,15 @@ Note that the question is that the descendants diff is no more than 5, not the h
 Homework 5 Q5
 
 Do not forget to reset the visit flag of nodes. 
+
+Homework 6 
+Q1 the height of avl-tree < 2log(n) + 2, the height of splay tree is h < log(n+1)
+
+external node is the nodes which do not store anything. 
+
+Q6 removeExternal is to remove the external node and its parent, replace its parent by its sibling. 
+
+So if removeExternal is called during the remove, if the deleted node's parent is root. In that case, the other child of the root would become 
+the root afterwards, so it is still an AVL tree. 
+Else if the parent is not root, the only AVL-tree which would become non-AVL tree is the one rooted at w (which is the parent of the parent of v)
+
