@@ -1,0 +1,13 @@
+char devices : keyboard, mouse, terminal
+
+block devices: disk 
+
+database is not necessarily built on the file system, it can manipulate the raw disk. 
+
+linux pipe is a way to achieve the communication between processes. 
+
+socket: processes among different hosts can communicate with socket. 
+
+symbolic links: 
+
+special files: 
