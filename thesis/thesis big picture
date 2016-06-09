@@ -34,3 +34,6 @@ actually, I find my former topic is very consistent with the current one. The mo
 talking about write amplifications in LSM-tree. The current one is just talking about the redundant data in storage systems. 
 To this end, I think it is not very far away. 
 
+[log 09/06/16]
+can we cache the assignment result on client side, and introduce some methods to let the fix the errors. Actually, in 
+backup scenario, the result of assignment can be cached in the clients. Because those data is rarely deleted. 
