@@ -1,0 +1,6 @@
+About delta compression
+
+A technique used in delta compression is super fingerprint. this concept is very similar with merkle tree. 
+
+A super fingerprint is the hash of a subset of the fingerprints. Comparing the super fingerprint can accelerate the 
+performance of finding the similar items. 

@@ -25,5 +25,12 @@ In 3.1.1, the authors mention 'large file has larger fingerprints thus larger me
 The recipes used in mc is migrate recipe and restore recipe. 
 
 What are the SFs?
+--this question is answered in the techniques-> file systems -> delta compression
 
 Overall, the overhead introduced is not too large and the improvement of the compressibility is quite considerable. 
+
+[log 09/06/16]
+actually, I find my former topic is very consistent with the current one. The most important part in my former proposal is 
+talking about write amplifications in LSM-tree. The current one is just talking about the redundant data in storage systems. 
+To this end, I think it is not very far away. 
+

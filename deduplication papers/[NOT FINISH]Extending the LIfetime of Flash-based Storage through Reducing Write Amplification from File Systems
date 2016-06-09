@@ -1,0 +1,21 @@
+Author: Youyou Lu, etc. from Tsinghua U
+Published in FAST'13
+Date:09/06/2016
+
+Write amplifications from file systems include:
+(1) jounaling
+(2) metadata sync (?)
+(3) page-aligned update
+
+Interesting discovery:
+(1) the increased density of flash memory requires finer voltage steps inside each cell, which is less tolerant to leakage 
+and noise interference. 
+
+(2) metadata updates make things worse. We can imagine the write mechanism of ssd, since metadata needs to be written in a 
+sync manner, that means, this small writes can only return after the write has been finished. However, small write on SSD 
+is very slow. 
+
+(3) apart from metadata, small write is the same. 
+
+The idea of this paper is to propose an object-based flash translation layer design. To this end, the mechanisms are co-
+designed with flash memory. By leveraging page metadata, OFTL enables lazy persistence. 
