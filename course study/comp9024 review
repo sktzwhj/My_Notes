@@ -31,3 +31,8 @@ So if removeExternal is called during the remove, if the deleted node's parent i
 the root afterwards, so it is still an AVL tree. 
 Else if the parent is not root, the only AVL-tree which would become non-AVL tree is the one rooted at w (which is the parent of the parent of v)
 
+Homework 7 
+
+Q2 just use the recursive algorithm to scan each node
+
+Q5 note that the first transformation of the sum equation and when n> 3, the equation i<2^(i/2) holds.  

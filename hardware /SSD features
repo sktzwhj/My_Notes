@@ -13,3 +13,73 @@ The feature of SSD is that
    Since the page is never updated by a in-place-update way, when a page is re-mapped, the old one would be expired. So we need garbage collection. 
    However, since the erasure needs to be done at the block level, the GC needs to do some data migration during the collection. This would have some 
    negative impact on the global write performance. 
+
+
+Description from CAFTL paper in FAST'11:
+
+Flash memory has three critical technical constraints. 
+
+(1) no in-place overwrite. 
+(2) no random writes. - the pages in an erase block must be written sequentially. 
+(3) limited erase/program cycles. - an erase block can wear out after a certain number of erase/program cycles.
+
+In order to solve the problems, the FTL is designed like the followings, 
+
+(1) Indirect mapping
+(2) Log-like  write mechanism - each write to logical page only invalidates the previously occupied physical page. 
+(3) wear-leveling, since writes are often concentrated on a subset of data, which may cause some blocks to wear out earlier 
+than the others. So the FTL tracks and shuffles hot/cold data. 
+(4) over-provisioning - in order to assist garbage collection, SSD manufactures usually include a certain amount of over-
+provisioned spare flash memory space in addition to the host-usable SSD capcity. 
+
+let's think about why prosioning space can make longer lifespan of SSD devices. For instance, when we just want to write 
+4KB data, but there is no avaliable space. However, some block contains garbage which can be collected. In this case, the 
+SSD needs to read all the 512KB block, erase the block, update the 512KB. 
+
+Only the OSs which support trim instruction can benefit from the garbage collection. 
+
+Then garbage collection needs to have some avaliable space to temporarily put the data in. 
+
+the methods used in this paper: 
+
+(1) making FTL content aware. 
+some interesting ideas. e.g., log-like write mechanism makes it possible to re-validate the data rather than re-writing. 
+
+CAFTL is a combination of both in-line and out-of-line dedup. 
+
+fixed-size chunking rather than variable-size chunking is used. because in SSD, the mapping and many other mechanisms are
+designed for page size. 
+
+A discovery is that most fingerprints cannot be matched. Most comparisons are useless. 
+To solve this problem, 
+
+the authors partition the hash value space into N segements. so a fingerprint can be assigned to a certain segement by 
+hashing (e.g., f mod N). each segment contains some buckets. each bucket is a 4KB page in memory. each reference has a 
+8-bit reference counter. 
+
+when the size of fingerprints is very large, then comparing the fingerprints is very time-consuming. 
+
+indirect mapping. the existing 1-to-1 mapping mechanism in SSDs cannot be directly used for CAFTL, which is essentially N-to
+1 mapping. the challenge is (1) the physical page is relocated to an other place (by GC, for example). we must efficiently 
+mapping all logical pages mapped to this page to its new physical page. (2) the physical page cannot be collected before 
+all the logical pages referencing it has been demapped. so that we must track the reference count. 
+
+in the paper, the authors introduce two-level indirect mapping. the benefit of keeping the direct mapping with indirect mapping 
+is that we can guarantee the performance of regular workload. the fingerprints are stored in the memory in the SSD. 
+
+the reason for sampling for hashing. because most data in file system workload is not duplicated. So comparing the fingerprint 
+is a waste of time in most cases. Therefore, only a sample fingerprint is chosen to be compared, if that fingerprint is duplicated, 
+we then calculate all the fingerprints to compare. 
+
+To this end, the most important thing is how to choose a sample. in this paper, it is unwise to rely on hashing to choose 
+the samples because hashing is time-consuming. The authors just choose the first 4 bytes. 
+
+In addition, the pre-hashing only uses CRC rather than SHA to save computing time. 
+
+Since the in-line dedup may hurt the performance of regular workload. So high/low watermark are used to indicate if the 
+in-line dedup should be stopped. The data left would be processed in the out-of-line dedup. 
+
+The out-of-line dedup can be processed together with the GC. And it can be interrupted by the normal requests to ensure the 
+performance of foreground jobs. 
+
+Let's learn how to use SSD simulators. 

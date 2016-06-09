@@ -1,0 +1,8 @@
+Author: Feng Chen, etc. 
+Published in FAST'11
+Date:08/06/2016
+
+The main concern of this paper is that the lifespan of SSD devices is much shorter compared with HDDs. So the authors solve 
+this problem in the FTL. By reducing the duplicate writes to SSDs, the lifespan increases. 
+
+An interesting reference can be, although the bit density of SSD grows, the raliability of SSDs is even worse. 
