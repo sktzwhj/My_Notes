@@ -36,3 +36,17 @@ Homework 7
 Q2 just use the recursive algorithm to scan each node
 
 Q5 note that the first transformation of the sum equation and when n> 3, the equation i<2^(i/2) holds.  
+
+Homework 8
+
+Q1 do not forget to remove the duplicates. 
+
+Q2 Using bucket sorting. 
+
+Q3 Find the inverses in a sequence. 
+
+use recursive method to solve this. firstly, divide the sequence into 2 parts. find the inverses in both of the parts. then find the 
+inversions that happen among the two. 
+
+note that once a merge is called, the two sub-sequences are already sorted. 
+

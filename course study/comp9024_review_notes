@@ -1,0 +1,9 @@
+Note that the lower bound for comparison-based sorting algorithm is Omega(n). 
+
+Union-Find Set 
+
+why the time complexity for list-based union-find set is O(logn) to add an element?
+
+because the list is sorted. 
+
+Radix-sort is a specialization of lexicographic sorting where bucket-sort is used as the stable sorting in every dimension.
