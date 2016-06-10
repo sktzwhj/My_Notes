@@ -1,0 +1,35 @@
+10th June 2016
+
+Talk with Mike Gigante, 
+
+Outline, 
+
+Intro about myself. And Dr Peter Chubb introduces you to me. 
+
+My idea about file system and storage research 
+
+Currently, my interest is focused on data deduplication in storage systems including file system. Especially in distributed storage 
+systems. To be specific, how to route the data writes to different storage servers to gain more deduplication ratio and compressibility. 
+
+I find that it seems very hard to improve the performance of file system by designing today. I think the trend is that even we have 
+more and more data, a lot of data is duplicated. So it seems easier to improve the efficiency of storage systems by deduplication. 
+
+So I hope to get some advices from you about the real challenges in industry. 
+
+For example, what are the most serious problems for storage industry. 
+
+Actually, an SSD is written only for 1 to 3 times a day.
+
+It would be an interesting idea for sharding the namespace.  
+
+And to have a hierarchical structure. For instance, have a special routing for critical things. And a usual routing for general things. 
+
+So the topic can be how to scale up dedup storage systems to get a approximate linear performance improvement. 
+
+When we are keeping writing small files, the metadata in distributed storage (especially when we hope to do some dedup)
+
+for SSD, the layout of data is quite important. 
+
+new hardware - SMR (Singled Magnetic Recording) -see https://en.wikipedia.org/wiki/Shingled_magnetic_recording. SMR might provide 
+large volume. However, currently, the performance is bad. 
+
