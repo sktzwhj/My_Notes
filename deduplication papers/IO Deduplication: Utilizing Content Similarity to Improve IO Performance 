@@ -1,0 +1,8 @@
+Author: Ricardo et al. from Florida International Univ. 
+Published in FAST'10
+Date:10/06/16
+
+The objective of this paper is somewhat different from other dedup papers. The optimization purpose of this paper is to 
+improve the performance of I/O. 
+
+Because in some scenarios where the capcity is not a very big issue, I/O performance is more important than the duplicate.
