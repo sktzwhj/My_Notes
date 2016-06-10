@@ -1,0 +1,25 @@
+Author:Kiran Srinivasan, et al. from NetApp, Inc. 
+Published in FAST'12
+Date:10/06/2016
+
+The work before this paper does not use dedup inline for latency sensitive primary workloads. The main reasons are (1) 
+deduplicating data on disk cause fragmentation that increases seeks for subsequent sequential reads of the same data. 
+(2) dedup data requires extra disk I/O to access on-disk dedup metadata. 
+
+The purposes of iDedup is to provide primary inline dedup. Meanwhile, minimizing the extra seeks and I/O
+
+the algorithm of this paper is based on two insights:
+(1) spatial locality exists in duplicated primary data. 
+
+so only performing deduplication when a sequence of on-disk blocks are duplicated. 
+
+(2) temporal localisty exists in the access patterns of duplicated data
+
+maintain an in-memory fingerprint cache to detect 
+
+Since most dedup work occurs in the write path, it becomes even harder to maintain the already slow wirte latency. 
+
+And in order to dedup, some extra IOs are necessary to identify duplicates. 
+
+So the first matigate the fragementation caused by inline dedup. In addition, the second removes extra I/Osand lowers
+write path latency. 
