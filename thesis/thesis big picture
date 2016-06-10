@@ -37,3 +37,11 @@ To this end, I think it is not very far away.
 [log 09/06/16]
 can we cache the assignment result on client side, and introduce some methods to let the fix the errors. Actually, in 
 backup scenario, the result of assignment can be cached in the clients. Because those data is rarely deleted. 
+
+[log 10/06/16]
+in single-node dedup systems, the challenge of both providing high throughput and good dedup ratio is solved by choosing a proper 
+chunk size. 
+
+However, things are different in distributed storage. another thing is how to keep the load balancing. 
+
+so single or multiple metadata servers is actually a problem when we are designing a distributed storage with dedup. 
