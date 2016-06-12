@@ -1,0 +1,3 @@
+In FAST'13 paper 'Improving Restore Speed for Backup System...' mentioned that they tradeoff some dedup ratio for fast 
+restore. It seems that this is true for backup systems because the capping work can be done at segment level. However, 
+can this still be true for inline system?
