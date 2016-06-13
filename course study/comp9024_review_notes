@@ -12,3 +12,58 @@ Radix-sort is a specialization of lexicographic sorting where bucket-sort is use
 Maps and Dictionaries
 
 A map models a serachable collection of key-value entires. 
+
+Text Processing
+
+(1) brute-force pattern matching
+
+(2) boyer-moore heuristics. 
+
+looking-glass heuristic
+
+comparing P with a subsequence of T moving backwards
+
+character-jump heuristic
+
+when a mismatch occurs at T[i] = c
+if P contains c, shift P to align the last occurrence of c in P with T[i]
+else, shift P to align P[0] with T[i+1]
+
+To this end, we need to build a last-occurrence function when using boyer-moore algorithm. The occurrence function just indicate where
+does a character lastly appeared. 
+
+Note that there are two cases, (1) the last occurrence of P[i] has already be compared, (2) the last occurrence has not been comapred 
+yet. 
+
+1+l is the length to the last occurrence, j is the current position. if l+1<j, that means we have not compared the last occurrence yet. 
+If 1+l>j, that mean we have already compared the last occurrence. 
+
+Every new comparison is started from the end of the pattern, so the new j is always m-1 where m is the length of the pattern. However, 
+for i, since the pattern is moved forward. 我们只是把last occurrence和之前比较失败的地方对齐了，但是真正的比较还是要从结尾开始。所以，i = i + (m - (l+1))或者
+i = i + (m-j)，　也就是说，因为L序列只记录最后一次出现，如果最后一次出现已经被比较过了，那么只往后走一格．
+
+Boyer Moore 的时间复杂度是O(nm + s),但是这是最坏情况下，虽然和brute-force差不多，但是实际运行会好很多．
+
+(3) KMP Algorithm
+
+In order to use KMP algorithm, we have to calculate a Failure function.
+
+KMP preprocess the pattern to find matches of prefixes of the pattern with the pattern itself. 
+
+失败函数的值可以理解为若当前的比较失败，和当前后缀相同的最长前缀的长度。所以在brute-force的基础上，如果P[j]!=T[i]，那么j = F(j-1)
+
+这里注意到在boyer-moore算法中，找到匹配的条件是j = 0， 在KMP中， 找到匹配的条件是j = m - 1。因为前者是从后往前比较，而后者是从前往后比较。
+
+这里还要注意到一个特别的情况就是，如果j已经是0了， 那么说明已经没有可能通过前缀再找到什么合适的匹配了，那么这个时候j本来就在pattern的头部，只要把i = i+1就可以
+了。
+
+还有failure function的计算，其本身就是KMP算法。
+
+首先j = 0, i = 0; 每匹配上一个， F[i] = j +1 ,i++;j++,如果出现没有匹配成功的，那么这个时候j = F[j-1] 如果到最后还是没有找到， 那么F[i] = 0, i = i+1 
+
+The time complexity for KMP algorithm is O(m+n).
+
+KMP算法只要抓住主串不回溯的精要就可以了。
+
+
+
