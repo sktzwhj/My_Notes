@@ -1,0 +1,21 @@
+when we are designing a server program, each user of the server must receive immediate response. If there were many users
+it becomes impossible if your server is waiting for input from another user. Consequently, we need perform IO for multuple 
+clients. 
+
+Non-Blocking IO (ref : http://www.cnblogs.com/whyandinside/archive/2012/03/04/2379234.html)
+
+non-blocking means that the operation can return before the operation is actually finished. 
+
+but non-blocking I/O is somewhat a round-robin method. To this end, it is not efficient. So a good solution can be let your 
+process be awakened for I/O. This is accomplished by the system call select(2) and poll(2).
+
+To use select(2), we should firstly have a fd set. 
+
+read event, write event, exception event
+
+so what is the select mechanism? (ref http://blog.csdn.net/orz415678659/article/details/8958415)
+
+All of the three mechanisms(select, poll, epoll ) are sync I/O. 
+
+but they are sync non-blocking I/O. that means during the waiting period, the cpu can be used for something else. 
+

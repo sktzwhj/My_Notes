@@ -7,3 +7,8 @@ why the time complexity for list-based union-find set is O(logn) to add an eleme
 because the list is sorted. 
 
 Radix-sort is a specialization of lexicographic sorting where bucket-sort is used as the stable sorting in every dimension.
+
+
+Maps and Dictionaries
+
+A map models a serachable collection of key-value entires. 
