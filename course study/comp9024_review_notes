@@ -69,6 +69,157 @@ Graph
 
 三种Graph的描述方式：
 (1) Edge List Structure 
+每个边指向它的两个节点．节点并不指向边
 (2) Adjacency List Structure 
-(3) Adjacency Matrix Structure 
+每个节点指向所有和它相邻的边
+(3) Adjacency Map Structure 
+用一个hash map，每一个节点指向所有和它相邻的边，不过这里的边都用另一个节点作为key
+(4) Adjacency Matrix Structure 
+用一个m*m的矩阵，如果两个节点之间存在一条边，那么对应矩阵的位置值为１
+
+深度优先搜索
+
+subgraph 
+
+spanning subgraph　是子图，但是包含所有的节点
+
+连通性：如果任意两个节点之间都有边，那么就说是连通的．
+
+连通分量：maximal connected subgraph of G
+
+Tree and forests
+Tree:是一个图，但是没有cycle
+forests:forests的连通分量都是tree
+
+生成森林(spanning forest)：是一个图，是一个生成子图，这个子图是一个森林
+
+深度优先搜索的复杂度为O(m+n)，这里m是边的数量，n是节点数量．
+
+深度优先搜索算法
+
+Note that since there is cycle in a graph, so it is important to do the checks in DFS. 
+
+Algorithm DFS(G)
+Input: graph G
+Output: Labeling of the edges of G as discovery edges and back edges. 
+{
+for all u belongs to G.vertices()
+	setLabel(u, UNEXPLORED);
+for all e belongs to G.edges()
+	setLabel(e, UNEXPLORED);
+for all v belongs to G.vertices()
+	if (v is UNEXPLORED)
+		DFS(G,v)
+}
+
+DFS(G,v)
+Input: a graph G and a vertex v
+Output: Labeling of the edges of G in the connected component of v as discovery edges and back edges. 
+{
+	setLabel(v, VISITED);
+	for all e belongs to v's incident edges
+		if(UNEXPLORED == getLabel(e))
+			setLabel(e, VISITED)
+			u = getOpposite(e,v)
+			if(u is UNEXPLORED)
+				setLabel(u, VISITED)
+				DFS(G,u)
+		else
+			setLabel(e,BACK )
+}
+
+深度优先搜索的性质：
+(1) DFS遍历了图中所有连通分量的节点和边
+(2) 被标注维discovery的边组成了一棵生成树
+
+Path Finding Algorithm by extending DFS
+
+Algorithm PathFinding(G,v,z)
+Input: G, v, z
+Output: a path 
+
+setLaebl(v, VISITED);
+S.push(v);
+if(v == z)
+	return S.elements();
+for all e belongs to v's incident edges
+	if(getLabel(e) == UNEXPLORED)
+	{
+		setLabel(e, VISITED);
+		S.push(e);
+		u = getOpposite(v,e);
+		if(u == z)
+			return S.elements();
+		else if(u is UNEXPLROED)
+			PathFinding(G,u,z);
+		S.pop();
+	}
+	else
+	{
+		setLabel(e,BACK);
+	}
+	
+	S.pop();
+}
+
+
+Algorithm CycleFinding(G,v,w)
+Input 
+Output
+{
+	S.push(v);
+	setLabel(v,VISITED);
+	for all e belongs to v's incident edges
+		if(e is UNEXPLORED)
+			S.push(e);
+			w = getOpposite(e,v)
+			if(w is UNEXPLORED)
+			{
+				setLabel(w,VISITED);
+				pathDFS(G,w,z)
+				S.pop();
+			}
+			else
+			{
+				T is a new Stack 
+				repeat
+				{
+					o = S.pop();
+					T.push(o);
+				}until(o == 2);
+				
+				return T.elements();
+			
+			}
+		S.pop();
+}
+
+宽度优先搜索
+
+宽度优先搜索的特性
+(1) 宽度优先搜素的路径组成了一棵生成树
+
+有向图的强连通性：每个节点都可以到达其它所有节点
+
+强连通判断的算法
+
+求传递闭包
+
+Floyd Warshall算法，其原理是
+
+首先给所有的节点编上号，从１到n.G1 = G0(G)．然后每次两重循环，如果在Gi-1中存在一个k，vi和vk相邻,vk和vj相邻，那么就在Ｇi中将vi和vj直接连起来．
+
+算法的时间复杂度是O(n3)
+
+有向无环图以及拓扑顺序
+
+Algorithm for Topological Sorting 
+
+Number vertices, so that (u,v) in E implies that u < v
+
+Use DFS for Topological Sorting
+
+就是在DFS之前n = number of vertices, 然后在深度优先的最后给当前的v赋值为n，然后将n = n-1
+	
+
 
