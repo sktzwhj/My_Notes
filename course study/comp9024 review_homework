@@ -104,3 +104,48 @@ so sometimes if my own design of algorithm is very trivial, try if we can descri
 
 Q6. use LCS to solve this. 
 
+Homework 11
+
+Q1 
+
+Algorithm BFS(G)
+Input: G, v
+Output: Labeling....
+
+for all u belongs to vertices in G
+	setLabel(u, UNEXPLORED);
+for all e belongs to edges in G
+	setLabel(e, UNEXPLORED);
+for all v belongs to vertives in G
+	BFS(G,v)
+	
+
+BFS(G,v)
+setLabel(v, DISCOVERED)
+q is a queue;
+q.enqueue(v);
+
+while(q is not empty){
+	v = q.dequeue();
+	for all e belongs to v's incident edges
+		if(getLabel(e) == UNEXPLORED)
+			w = getOpposite(e,v);
+			if(w is UNEXPLORED)
+				setLaebl(e, DISCOVERED);
+				setLaebl(w, VISITED);
+				q.enqueue(w);
+}
+
+Q2 其实求强连通分量就是把森林中的树找到
+
+首先将所有节点都标上 unvisited，
+
+然后对所有节点，如果这个节点没有访问过，就基于它做深度优先搜索，每个深度优先搜索的结果放在一个list里面，作为一个component
+
+Q3　根据BFS的性质，用BFS就可以
+
+从v触发，进行宽度优先搜索．注意记录每个节点的路径Q(w) = Q(s)+{v,w}
+
+BFS如果出现已经访问过的边，标CROSS
+
+Q5 首先给所有节点拓扑标号，然后，两重循环，看有没有逆着序号的边即可．
