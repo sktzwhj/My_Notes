@@ -1,0 +1,25 @@
+Author: Joao Paulo et al. from HASLab INESC TEC and Univ. of Minho
+Published in ACM Trans. on Storage
+Date:13/06/2016
+
+Current primary deduplication systems rely on special cluster filesystems, centralized components, or restrictive workload
+assumptions. 
+
+The challenges in primary storage deduplication is sensitive to latency. In addition, none of existing systems were able 
+to handle efficietly random storage workloads. 
+
+Off-line method can be a solution. However, off-line methods rely on the off-peak periods which is scarce in cloud infrastructures. 
+
+Since the global indexing introduces much overhead, existing distributed in-line deduplication systems relax dedup's accuracy
+and find only a subset of the duplicates accross the cluster. 
+
+[interesting thing] DEDIS's overhead and performance are independent from the storage workload's spatial and temporal locality.
+
+DEDIS uses a cluster storage with distributed fault tolerance and coordination to manage the metadata. 
+
+The architecture of DEDIS, 
+
+(1) Distributed Duplicates Index (DDI). 
+
+My idea, can we move the data to a temporary place (like a queue), and post-processing the dedup, after the dedup, transfer them
+into the primary storage?

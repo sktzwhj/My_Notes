@@ -65,5 +65,10 @@ The time complexity for KMP algorithm is O(m+n).
 
 KMP算法只要抓住主串不回溯的精要就可以了。
 
+Graph
 
+三种Graph的描述方式：
+(1) Edge List Structure 
+(2) Adjacency List Structure 
+(3) Adjacency Matrix Structure 
 
