@@ -1,0 +1,16 @@
+Author: Cornel Constantinescu, et al. from IBM 
+Published in 2011 Data Compression Conference 
+Data: 15/06/2016
+
+Some aspects from this paper. 
+
+in a processor-constrained system, dedup before compression may be preferred to reduce the volume of data to compress. 
+
+So it seems that compress is more computing-intensive. 
+
+the data reduction of primary storage can achieve from 0.8 to 0.3. (free 20% to 70% of disk footprint)
+
+Compression before deduplication does not show very notable difference compared to comparession after dedup.
+
+even for high-entropy medical images, the benifit of data reduction can be around 20%.
+
