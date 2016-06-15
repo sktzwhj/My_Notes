@@ -1,0 +1,24 @@
+Title:Deep Machine Learning—A New Frontier in Artificial Intelligence Research
+Name: Huijun 
+Date:15/06/2016
+
+
+Summary: 
+
+This article introduces the two main methods in deep learning - CNN and DBN. Meanwhile, it also provides some new architectures
+for deep learning. Deep learning is still in its eraly age. In the future, sparse coding and semi-supervised manifold learning
+,etc can be promising research directions. 
+
+What I like?
+
+A good summary of DP. 
+
+What I dislike?
+
+NA.
+
+Discuss questions.
+
+1. In my understanding, the DP neural network has more hidden layer so that it could have more powerful expression ability.,
+However, there is a saying that 3-layer neural network can express almost all functions. So what are the main purposes of 
+the additional layers? For choosing features?

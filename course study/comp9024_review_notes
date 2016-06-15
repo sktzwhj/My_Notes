@@ -220,6 +220,108 @@ Number vertices, so that (u,v) in E implies that u < v
 Use DFS for Topological Sorting
 
 就是在DFS之前n = number of vertices, 然后在深度优先的最后给当前的v赋值为n，然后将n = n-1
+
+Graph(2)
+
+Shortest Path
+
+Dijkstra Algorithm
+
+无向图　　　边的权重是非负
+
+Dijkstra(G,v)
+
+for all u in G.vertices()
+	if(u == v)
+		D[u] = 0;
+	else
+		D[u] = inf.
+		
+Q is a priority queue which is used to store the vertices and the key is the D[].
+
+while(Q is not empty)
+{
+	q = Q.removeMin();
 	
+	for each z in Q such that q is adjacent to u dp 
+		if (D[u] < D[z] + w((z,q)))
+			D[u] = D[z] + w(z,q);
+				change the key of u in the Q;
+}
+
+return all the D
+
+create an priority queue takes O(n) time. 
+removeMin takes O(logn) time. 
+the relaxation takes O(degree(u)logn) time. 
+
+So the overall time complexity of Dijkstra algorithm is sigma(degree(u)+1logn) = n*logn + O(2m*logn) = O((m+n)logn).
+
+Also O(mlogn)　因为连通图的边的数量肯定比节点多
+
+为什么Dijkstra算法可以工作呢?
+
+因为Dijkstra是一个贪心算法，那么如果我们能够证明已经被赋值的最短路径并不会被改变，就可以证明Dijkstra算法的正确性．证明可以是这样，我们每次更新一个节点的距离，
+由于所有边权值都为正，按么就不会存在一个距离更短的没有被扩展过的点，所以就可以证明正确性．
+
+
+最小生成树
+
+首先是几个概念
+
+生成子图
+Subgraph of a graph G
+containing all the vertices of G
+
+Spanning tree. a spanning subgraph that is a tree. 
+
+Minimum spanning tree (MST)
+spanning tree of a weighted graph with minimum total edge weight
+
+最小生成树　cycle property
+
+Kruskal算法
+
+首先，给每一个节点都定义一个cloud, 然后用一个队列，把所有的边都放进去，每次取出一条边，如果边的两端不在一个cloud里面，就合并，直到找到n-1条边
+
+这里的cloud可以用find-union strcuture
+
+Kruskal算法的复杂度？
+
+每次处理一个节点时，我们要合并partition，复杂度为logn．因此一共就是n*logn，然后每次removeMin ，所以是m*logn
+
+最小生成树Prim-Jarnik's Algorithm算法
+
+Algorithm Prim-JarnikMST(G):
+{
+	pick any vertex v of G;
+	D[v] = 0;
+	for each u in G (u!=v)
+		{
+			D[u] = inf;
+		}
+	T = null;
+	Q is a priority queue;
+	((u,null), D[u]) is the element and D[u] is the key
+	while Q is not empty do
+	{
+		(u,e) = Q.removeMin();
+		add vertex u and edge e into T;
+		for each vertex z in Q such that z is adjacent to u, do 
+			if(w((u,z)) < D[z])
+				{
+					Ｄ[z] = w((u,z));
+					change the (z,(u,z)) the element of vertex z in Q
+					change D[z] the key of vertex z in Q;
+				｝
+	
+	}
+	
+	return T;
+
+}
+
+时间复杂度: m*logn
+
 
 

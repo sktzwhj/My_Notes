@@ -149,3 +149,46 @@ Q3　根据BFS的性质，用BFS就可以
 BFS如果出现已经访问过的边，标CROSS
 
 Q5 首先给所有节点拓扑标号，然后，两重循环，看有没有逆着序号的边即可．
+
+Homework 12
+
+Q1 因为在一个图中，从一个源出发到其它节点的最短距离可以组成一个树，这个树的边就是最短路径
+
+for each vertex u in G, we introduce a variable closet[u] that stores its adjacent vertex in the cloud. in order to construct the tree
+, we modify the Dijkstra algorithm in this way: 
+
+(1) whenever a vertex with the minimum D[u] is removed from the Q, add the edge (closest[u],u) to the tree T 
+
+(2) if D[u] + w((u,z)) < D[z] holds, set closest[z] to u
+
+So it becomes like this, 
+
+DijkstraDistance(G,v)
+
+D[v] = 0;
+
+for all u (u!=v) belongs to G's vertices. 
+	D[u] = inf;
+
+Q is a priority queue containing all the vertices in G and the key of each element is D
+
+Create a Tree T;
+
+while Q is not empty
+	
+	z = Q.removeMin();
+	add an edge (closest[z],z) into the Tree
+	for all w who is adjacent to z
+		if(D[w] > D[z] + w(w,z))
+			D[w] = D[z] + w(w,z);
+			closest[w] = z;
+			
+return T and the label D[u] for all vertex u .
+
+Q4. 
+1. How to calculate the centre of T. 
+
+Q5
+
+
+	
