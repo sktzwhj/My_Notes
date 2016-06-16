@@ -1,0 +1,13 @@
+for inline storage systems
+
+the characteristics are, 
+
+(1) latency sensitive
+
+to this end, fingerprint look up is very time-consuming. but if we use compression, how big should the window size be?
+
+(2) for backup stream, chunks following a duplicate chunk are likely to be duplicates too. 
+
+primary inline and deduplication seems to be a conflict. 
+
+(3) achieving high write throughput should avoid expensive disk index lookups by having an effective chunk-hash cache. 
