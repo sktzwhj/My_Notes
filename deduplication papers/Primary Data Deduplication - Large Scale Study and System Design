@@ -14,3 +14,11 @@ Some studies in this paper:
 
 (1) larger chunk size, lower dedup ratio. 
 (2) chunk compressibility 
+
+The contributions of this paper: 
+(1) resolve the conflicts of chunk size and dedup ratio. High dedup savings achieved by 4KB chunks size are attainable with larger
+64KB chunks with chunk compression. as the loss of dedup opportunities arising from use of larger chunk sizes can be 
+canceled by increased compressibitlity of the larger chunks. 
+
+The authors believe that primary storage systems should use post-deduplication rather than in-line for the high demand of
+latency. (however, for some use cases, for instance, ssd, post-processing deduplication hurts)
