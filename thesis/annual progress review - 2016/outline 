@@ -1,0 +1,59 @@
+An outline for writing my proposal for first annual progress review. 
+
+The review can be divided into these parts. 
+
+data storage efficienty - data compression & data deduplication 
+
+相比与deduplication，数据压缩同时只考虑一个文件，或者一个小的窗口．因而数据压缩需要的内存更小．
+
+什么情况下用compression比用deduplication更好呢？
+
+很多时候，跨文件的deuplication可能没有多少收益，毕竟只有像backup storage才会有比较高的deuplication ratio．
+
+而similarity实际上对compression和deduplication都有价值
+
+而元数据对于compression和deduplication系统来说，实际上是不尽相同的．对于前者，有可能是一些tag，对于后者，一般是fingerprint这类东西
+
+we have a four demensional space. (inline/offline/backup/primary). In addition, we also have some theries here. 
+
+对于inline来说，主要的问题是可能dedup能够获得的效果已经比较有限了．
+
+The challenges are, inline (latency), snappy (what about its compression rate )实际上是用在GFS当中的
+
+Our proposed methodology.
+
+(1) routing
+a. similarity
+
+not only dedup, but also think about compression. 
+
+proposed solution, use application-level information to guide us to find more similarity. 
+
+i.e., tags for raw images, the digital image of CT scanner (medical). the genome data, the structure of protein  
+
+相似性　对于压缩来讲　　如何reorder data把他们放到压缩窗口中　　如何扩大压缩窗口
+
+
+
+b. locality
+
+to what extent does the locality (both spatial and temporal) holds for distributed inline dedup/compression system. 
+
+for example, we are going to do some experiment to see how is the locality looks like in spark/hadoop scenario.
+(what dataset we are going to use). 
+
+If the locality is not good enough, what can we do? Using LSM-tree?
+
+(2) querying
+
+a. the metadata can be organized in k-v store or something to improve the performance of querying. 
+
+b. how to organize the recipes to rebuild a file
+
+(3) the metadata management at each storage server level.
+
+how could we improve the efficiency of metadata operations since there are many small files (chunks) which leads to many metadata. 
+
+事实上，元数据管理在这里不仅和routing紧密相关，和querying也是紧密相关．routing管理的元数据包括fingerprint(for dedup system)．　application-level
+information．　(for compression)
+

@@ -1,0 +1,37 @@
+challenges:
+
+Dedup system
+
+1. in single-node dedup systems, the challenge of both providing high throughput and good dedup ratio is solved by choosing a proper 
+chunk size. 
+
+2. However, things are different in distributed storage. another thing is how to keep the load balancing. 
+
+3. It seems that today, even in distributed dedup systems, the metadata server is still single-node. So it might be a 
+performance bottleneck. Because for metadata management in dedup system, the overhead is even larger than general distributed
+file systems. 
+
+4. The fragmentation of chunks might be a problem. both for inline primary and backup dedup. 
+
+I guess SSD might alleviate this problem, because the gap of the performance between random/sequential access in SSD is 
+smaller than HDD. 
+
+The state-of-art 
+
+Dedup: block-level, file-level
+
+5. It seems there is read amplification problem in dedup systems. Because in order to aovid complicated seek, the whole 
+containers should be read. To this end, the I/O bandwidth is wasted. 
+
+6. In order to maintain the footprint for future check, the footprint should better be stored in the memory as a cache. 
+However, the size of the footprint can be very large. To this end, it is not efficient to store all of them in the memory. 
+So how to choose hot footprint to be stored in the memory. [ICDE'13]
+
+7. I find that for dedup in cloud storage, the main concern is about how to dedup encrypted data... very different from what has 
+been done on single-node systems.
+
+
+
+Some notes about the literatures. I find that iDedup is very similar to our purpose. However, their system is a single-node system. 
+Their optimizations is done based on their observations on spatial and temporal locality. However, does these locality still holds 
+for distributed storage？
