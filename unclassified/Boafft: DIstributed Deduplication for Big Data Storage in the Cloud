@@ -1,0 +1,28 @@
+Author: Shengmei Luo et al. from U of New York
+Published in IEEE Trans on Cloud Computing
+Date: 19/06/2016
+
+因为这是一篇关于分布式的工作，因而看一看．
+
+这里有一个好数据，有75%的数据是冗余的．在备份存储中，可以达到90%.
+
+把数据去重分布化一直都是一个有意义的工作，而对于分布式来说，要解决的问题就是可扩展性．
+
+如果去全局的比较和去重，那么去重率自然是很高，但是这样就需要维护一个全局的index library. 因而肯定会有显著的性能下降．
+
+因而解决分布式存储当中的去重，常用的手段就是路由过去，然后让存储节点本地去重．但是这里有一个重要的前提，那就是怎么样把相似
+的数据路由到相同的存储节点上，这样就可以使得分开去重可以尽量达到和全局去重一样的效果．
+
+这篇文章声称的贡献包括：
+(1) 一个data routing算法，将相似的数据路由到一起
+(2) 加速routing和本地dedup，具体措施包括 a)在每个storage server上设置一个fingerprint cache，2)用in-memory的方式
+来避免大量的随机读写．
+
+这个工作的实现是在HDFS上做的，
+
+本文在路由的时候用的是stateful routing．神奇的是它竟然是把fingerprint发到每一个客户端上去做比较．那岂不是说，每一次写入
+都要把所有的storage server都牵扯进来？而且，岂不是这样，就需要等最慢的哪个storage server反馈过来，才能决定本次的路由？
+
+
+
+另外，真觉得我那个client一侧做cache是个好的idea．
