@@ -323,5 +323,6 @@ Algorithm Prim-JarnikMST(G):
 
 时间复杂度: m*logn
 
+递归算法的精髓是，调用自己．
 
 

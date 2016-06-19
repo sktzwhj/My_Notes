@@ -36,4 +36,5 @@ err = (S - S*)/S
 
 作者数学证明了用较小样本集合就可以得到精确结果的可行性．
 
-对于我们的启示是，对于inline的
+对于我们的启示是，对于inline的dedup来说，有多大的收效实际上是和workload紧密相关的．因而也更加证明了application level的信息对于inline 
+primary storage当中的dedup的重要性．

@@ -1,10 +1,24 @@
 Important homework 
 
-Homework 2
+Homework 3
+
+Q3 递归方法的设计和数学归纳法是一样的
+
+比如要求singly linked list的逆，那么就可以这样做
+
+如果是一个节点，逆就是自己
+
+如果是两个　n1 -> n2，那么逆就是n2 -> n1
+
+那么如果更多　就是　n2 -> reverse(n1)
 
 
 
 Homework 4 Q2. 
+
+注意这里stack不是用来放a的．．．
+
+
 
 Homework 4 Q5. The rules of mod% for positive numbers cannot be used for negative numbers directively. 
 
