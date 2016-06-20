@@ -1,0 +1,36 @@
+Questions that needs to be discussed: 
+
+(1) How to go from the typical datasets to general solutions. 
+
+(2) About the methodology
+
+a) The former idea I have, the buffer can be not only an in-memory buffer. 
+
+b) About the delta-compression, current usage is delta-compression after dedup. The dedup can only find the 
+exactly indentical stuff. However, the delta-compression could find some similar things. 
+
+c) Currently, I do not have very concrete ideas about methodology. What I have now are i)analysis the locality 
+of the wo
+
+有一些有用的工作，比如说如何抽取feature？
+
+
+数据是分为human-generated以及machine-generated．对于machine-genearted，数据量会更大．而且human-generated数据中实际上
+冗余是非常严重的．
+
+而且如果我们把时间窗口放得宽一些，inline实际上也是一种backup，实际上我们的数据量的增长速度并不是真的是指数级别增长的．这些数据
+当中有很多的数据都是冗余的．
+
+方法其实可以通过这样的方式来阐述：
+
+目前的dedup系统或者压缩系统，多是chunk级别的，从block device level去做数据去重，但是依然面临两个重要问题，(1) dedup 或者
+compression ratio方面，
+
+(1) traditional chunk based dedup system could not deal with the 
+
+关于methodology，我们可以写的东西包括(1) locality的分析和测试 (2)　LSM-tree based middleware to resort the access pattern
+(3) client-side metadata management (4)
+
+我们已经完成的工作是， 运用LSM-tree管理文件系统元数据，在这个过程中，我们通过分离value和pair实现降低LSM-tree的写放大的目的，归根
+到底，这也是一种消除数据冗余的方式，我们是通过消除元数据管理中反复排序使得元数据内容被写很多次的问题．从而消除冗余的．
+同时，我们采用了一些优化方法使得
