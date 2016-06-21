@@ -23,8 +23,10 @@ of the wo
 
 方法其实可以通过这样的方式来阐述：
 
-目前的dedup系统或者压缩系统，多是chunk级别的，从block device level去做数据去重，但是依然面临两个重要问题，(1) dedup 或者
-compression ratio方面，
+目前的dedup系统或者压缩系统，多是chunk级别的，从block device level去做数据去重，但是依然面临两个重要问题，(1) 首先是性能，因为为了
+保证一定的throughput，因此就不能做到所有的fingerprint都检查．那么就只能抽取其中的一部分．但是这样就会导致不能找到所有的duplicates.
+
+那么我们是否可以通过一些其它维度的application-level的信息来指导我们的dedup或者compression，以达到增强压缩或者去重的有效性呢？
 
 (1) traditional chunk based dedup system could not deal with the 
 

@@ -53,6 +53,10 @@ Homework 7
 
 Q2 just use the recursive algorithm to scan each node
 
+Q3 (logn)^2的复杂度与n相比？
+
+Q4 注意到这里对复杂度有要求，O(h1+h2)．其实我们也可以先把T1和T2的min都先取出来，然后比较哪个小．然后把小的那个作为
+
 Q5 note that the first transformation of the sum equation and when n> 3, the equation i<2^(i/2) holds.  
 
 Homework 8
