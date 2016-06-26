@@ -1,0 +1,7 @@
+如果出现了字体没有嵌入之类的错误，可以这么解决。
+
+一般问题都是出现在matlab转过来的图片里面没有对字体进行嵌入。
+
+    pdflatex yourfile.tex
+    pdftops yourfile.pdf
+    ps2pdf14 -dPDFSETTINGS=/prepress yourfile.pdf yourfile-output.pd
