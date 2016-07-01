@@ -1,0 +1,9 @@
+1. If our architecture is designed for long-term, how can we evaluate that. 
+
+2. The application level information can be classified into instant information like user id and 
+photo tag. It can also be some information that needs to be identified by some machine learning 
+techniques in long time. I think the design is quite different among these two. 
+
+3. Any comments to the current architecture. 
+
+4. Can the estimator be real-time estimator?
