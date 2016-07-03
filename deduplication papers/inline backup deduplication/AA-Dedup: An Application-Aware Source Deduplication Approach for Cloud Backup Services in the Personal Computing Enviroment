@@ -1,0 +1,30 @@
+Author: Yinjin Fu et al. from NUDT
+Published in Cluster Computing'11
+Date: 03/07/2016
+
+source deduplication means the duplicates are discovered in source side. 
+
+in source deduplication, elimination of duplicate data occurs close to where data is created, rahter than where data is stored
+as in the case of target deduplication. 
+
+There are some discoveries in this paper: 
+(1) the majority of storage space is occupied by a small number of compressed files with low sub-file redundancy. 
+
+因为很多空间实际上是被大文件占据了，而这些大文件，很多都是被压缩了的，比如一个jpg图片，那么如果只改变其中一小部分，那么这个jpg的差异可能会非常大。所以说
+两个压缩文件之间能够找到较多 chunk level的重复的可能性很低。
+
+那么对于这样的文件，用file level的hashing就足够了。
+(2) static chunking method can outperform content defined chunking in deduplication effectiveness for static application data 
+and virtual machine images. 
+
+CDC的开销大一点，但是解决了boundary-shift的问题，相比之下，SC开销小一点，但是对于很多文件类型，两者的效率是差不多的。（去重率）
+
+(3) the computational overhead for deduplication is dominated by data capacity. 
+
+所以对于压缩文件，while file chunking + rabin hashing的方法就已经足够高效了。
+
+(4) the amount of data shared among different types of application is negligible. 
+
+
+
+本文中对于小文间基本不做处理。因为从他们的实验中看出小文间虽然数量巨大但是占据的空间却很小。
