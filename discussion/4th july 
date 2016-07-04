@@ -1,0 +1,32 @@
+关于application level information到底可以用在哪里
+
+比如说可以用在预测duplicate，在采样的过程中，我们怎么样利用application level的信息来指导我们采样。
+
+今天提出的新的体系结构
+
+inline + backup的体系结构， 是不是在inline当中，有很多东西其实和backup特性是一样。是不是我们可以弄一个两级的结构来进行处理。
+
+在这个过程中可能会存在说把backup那一层存储中和当前hot数据相似的部分拿上来。那么我们是否可以利用application level的information来指导这种cache预取策略。
+
+三个点
+
+(1) inline + backup architecture
+
+(2) parallel computing architecture 
+用计算来通过application level的信息来得到数据和已有数据的相似性。
+计算时可能也需要一些东西，比如已经存了的数据的metadata. 
+
+(3) Spark当中也许可以通过这种相似性的去重优化来减少不同节点之间的数据传输量。
+
+当前最重要的工作就是找到数据集，来支撑我们的假说。
+
+分析inline数据访问当中的数据特性。比如多少数据是hot的，抽取application level的信息需要多少时间（写一些算法）
+
+为什么inline当中有很多数据满足backup的特性呢？
+
+活跃的数据集是什么样的。
+
+关于那篇inline storage deduplication的survey应该怎么写
+
+平时注意积累，注意将那些paper放到一个比较好的分类体系下。比如inline中和backup特性一致的大部分数据(和backup差不多的处理方法)， 和backup很不同的部分，采用什么样
+的优化方法。按照这种分类来组织文章，我们可以有一篇survey。

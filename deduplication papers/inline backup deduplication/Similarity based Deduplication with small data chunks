@@ -1,0 +1,8 @@
+Authors: L Aronovich et al. from IBM 
+Published in PSC'12 (这是个什么会)
+Date: 04/07/2016
+
+本文的思想是用LSH， 如果说我们全部找identical的chunks，那么需要存很多的fingerprint，在很长一段时间内，这些fingerprint应该都很难放到内存当中。
+因此，本文用LSH，这样就可以找到相似的，那么这样实际上粒度就可以做得很大，只有相似的才有必要去进一步比较小的chunk。
+
+其实相似的，感觉LSH可以用来做delta compression里面的base文件的寻找。
