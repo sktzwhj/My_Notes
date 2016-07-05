@@ -1,0 +1,3 @@
+For traditional bloom filter, once a data is written, you cannot delete it in the bloom filter. 
+Because your deletion may have some influence on the other data. So in order to solve this, a solution is to replace the bits in bloom 
+filters by counters. 

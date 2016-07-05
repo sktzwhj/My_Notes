@@ -1,0 +1,5 @@
+在看http://searchstorage.techtarget.com/feature/Six-requirements-for-deploying-primary-storage-optimization
+时的一点感想。
+
+如果可以把primary data deduplication做好的话，那么我们就可以减少在后续backup deduplication的时候需要dedup的数据量。
+

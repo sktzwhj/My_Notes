@@ -1,0 +1,14 @@
+Author: Kave Eshghi, et al. from HP Labs & HP Storage
+Published in HP Technical Reposts
+Date: 05/07/2016
+
+This paper argues that scaling the already successful backup deduplication is very difficult. 
+
+To be specific, especially for interleaved data for which multiple backup streams are combined to improve the efficiency of backup. 
+So the purpose of this paper is to improve this scenario. 
+
+本文将路由算法总结为两类， 一个是Min Hash这样，基于文件的内容来route （注意这是一种无状态的路由协议），另一个是Auction,看当前哪个节点含有和要路由的数据相似最多
+的节点。
+
+本文提出一种叫做sticky auction的路由算法。
+
