@@ -22,7 +22,7 @@ working sets are groups of block addresses or offsets that are likely to be acce
 
 The tradeoff in this paper is about the size of working set and space-efficiency and the time needed for calculation. 
 
-So a descrition about this method is like the followings, 
+So a description about this method is like the followings, 
 (1) initilization 
 creating the working set table. initialize the cache with the most hot working set. 
 

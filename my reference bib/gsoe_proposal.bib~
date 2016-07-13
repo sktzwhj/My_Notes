@@ -26,7 +26,6 @@
   publisher={ACM}
 }
 
-
 @inproceedings{tsuchiya2011dblk,
   title={Dblk: Deduplication for primary block storage},
   author={Tsuchiya, Yoshihiro and Watanabe, Takashi},
