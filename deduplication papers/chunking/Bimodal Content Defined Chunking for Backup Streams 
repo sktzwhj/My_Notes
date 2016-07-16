@@ -1,0 +1,36 @@
+Authors: Erik Kruus et al. from NEC Lab
+Published in FAST'10
+Date: 15/07/2016
+
+The key idea of this paper is to use two chunk size targets, and mechanisms that dynamically switch 
+between the two based on querying data already stored. 
+
+One problem we mighe consider, maybe we can think about special chunking method for primary storage. 
+Because traditional CDC is not proper. 
+
+There is an observation in this paper: in real file systems, most file accesses are read-only, files tend
+to be either read-only, files tend to be either read-mostly or write-mostly, and that a small set of files
+generates most block overwrites. 
+
+During repeated backups, entire files may be duplicated, and even when changed, the changes may be localized
+to a relatively small edit region. 
+
+Based on these observations, this paper proposed two principles. 
+
+(1) long stretches of unseen data should be assumed to be good candidates for appearing later on. 
+(2) inefficiency around 'change regions ' straddling boundaries between duplicate and unseen data can be 
+minimized by using shorter chunks. 
+
+对于这篇文章，首先我们需要搞明白文章的目的是什么。用更大的chunk来达到相同的deduplicaton ratio. 
+
+两种可行的方法,一种是先搞成大的chunk，然后发生修改之后再进一步的re-chunking，另一种是先弄成小的chunk，然后把没有修改的
+小chunk聚合成大的chunk。在这里初步分成大的或者是小的chunk的时候，完全可以采用fixed-sized chunk 
+
+也就是说，在stream流过来的时候，我们需要判断是应该保留或者修改当前的chunk级别。所以叫做bimodal。
+
+有个问题是，一个数据有可能在不同的backup version当中存在不同的chunk，大的或者小的当中。这样会导致一定的dedupe 损失。
+
+不过那种限制最大和最小的chunk size的方法实际上会导致一些chunk实际上不是content defined. 所以最好避免。
+
+
+这个算法不需要存储什么元数据做支持，只要能够查询数据是否是已经存在的就可以了。这点来讲，比如可以使用bloom filter. 

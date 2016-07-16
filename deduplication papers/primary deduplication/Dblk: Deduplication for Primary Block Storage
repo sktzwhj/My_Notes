@@ -1,0 +1,16 @@
+Authors: Yoshihiro Tsuchiya et al. form FUjitsu Limited. 
+Published in MSST'11
+Date: 16/07/2016
+
+The problem definition is the same as our's. The method is different. This paper uses multiple layer 
+bloom filter to efficiently store the metadata in memory. 
+
+用多层bloom filter的好处是什么呢？
+
+相对与B-tree等索引结构，MBF的好处是树的高度会低一些。
+
+bloom filter的refresh也需要garbage collection. 
+
+那么层次化的bloom filter的每一层意味着什么呢？
+
+bloom filter最关心的就是过滤器的大小以及错误率。
