@@ -8,3 +8,5 @@
 duplication的size的分布:
 
 我们测试得到了LBA的最大值大约在1137094032
+
+我发现在dmdedup的paper里面有关于fiu trace比较详细的统计数据,我们的统计结果和他们基本是一致的.
