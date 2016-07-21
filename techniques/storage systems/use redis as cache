@@ -1,0 +1,13 @@
+今天研究了下如何用redis来做cache.
+
+对于我们对fiu进行分析的工作,我们简单地想
+
+如果要做LRU cache,可以对内存大小进行限制,然后redis本身支持LRU的替换策略.
+
+如果要将最早插入的数据替换掉,那么可以这样做:
+
+用两个redis实例,其中一个记录 单调递增序号:fingerprint 另一个记录fingerprint:metadata
+
+我们实际用是用第二个作为cache,对于第一个,我们可以看当前的时间(trace中的timestamp),如果cache没有满自然是可以一直往
+里面装,但是如果cache已经快要满了,那么只能从第一个实例当中进行替换,比如取出前1000个,然后通过他们对应的fingerprint到
+cache当中把数据删除了.
