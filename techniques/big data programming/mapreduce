@@ -7,3 +7,20 @@
 的用户可以方便地进行分布式计算.
 
 map和reduce实际上是对于一个分布式计算任务的抽象.并且map和reduce都是需要用户去实现的.
+
+map:将一些input pairs计算然后produce一些中间kay/value pairs.
+reduce: 将中间key/value pairs合成为一些更少的values.中间结果是用户根据一个reduce函数来给的一个迭代器,从来处理比较大
+数据集的情况.
+
+mapreduce的基本工作流程是这样的,用户将作业提交给调度器,然后调度器将作业分配给空闲的机器(workers and reducers).master
+会维护每个work的状态,然后也会定期去ping workers.然后如果一个worker发生了failure,那么我们可以将其状态修改为reset然后
+让其重新进入调度器的调度candidates. 
+
+在mapreduce里面,我们可以容忍几个records的错误,这是一个可选的模式.
+
+关于backup task,其思想就是由于有些任务完成的比较慢,使得整个任务的完成时间受到影响,那么当很多任务都已经完成并且此时有空闲
+的计算资源时,我们把这些没有完成的任务也分一些给其它的机器,然后谁先执行完我们拿谁的结果
+
+总结一下,感觉mapreduce的确是把容错,任务调度这些事情全部都交给了mapreduce library去做,使得用户可以简单快捷地开发分布
+式计算的任务.
+
