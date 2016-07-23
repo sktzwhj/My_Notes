@@ -1,0 +1,21 @@
+Authors: Fanglu Guo et al. from Symantec Corp. 
+Published in FAST'11
+Date: 23/07/2016
+
+为什么reference management很重要，有什么challenges？
+
+1. 首先可靠性很重要，因为如果发生了错误（比如回收了还存在引用的数据），很难检测。
+
+集中可选的reference count的方法。
+(1) counter... error-prone...
+(2) reference list ... still need some logging mechanism 
+(3) mark and sweep ... very time consuming. while it is very reliable
+
+因而本文的解决方案是  grouped mark and sweep
+The basic idea of their method is to avoid touching every file in the mark phase and avoid touching
+every container in the sweep phase. 
+
+本文的方法是把backup files分成几个group，然后在mark的时候，那些没有发生变化的group是不需要重新mark的。
+在sweep的时候，我们只去sweep那些有文件删除的group，因为只有这些group有可能产生segment freed
+
+所以总结一下这篇文章关于reference management的方法，实际上就是将mark and sweep通过分组的方式避免全局扫描。
