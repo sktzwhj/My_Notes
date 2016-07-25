@@ -1,0 +1,9 @@
+jupypter
+
+一个notebook是有text，可执行代码等组成的。
+
+一个jupyter notebook打开实际相当于一个本地的服务。
+
+notebook的kernel是ipython的解释器。 
+
+jupyter用了latex的公式解释器，因此打起公式来还是很好看的。
