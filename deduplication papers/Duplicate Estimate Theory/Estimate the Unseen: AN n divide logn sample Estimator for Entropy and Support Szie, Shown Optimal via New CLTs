@@ -1,0 +1,9 @@
+Authors: Gregory Valiant et al. from UC Berkerly
+Published in STOC'11
+Date: 26/07/2016
+
+这是一篇理论文章，大概来讲，问题是： 假如给我们一个数据集，然后我们采一些样本，我们需要采集多少样本，能够得到怎么样的结果呢？
+
+这里我顺序复习了一下中心极限定理和大数定理，统计学有着将局部到整体推论的能力。
+
+所以estimate一个集合的duplicate ratio实际上可以转化为estimate一个集合的entropy的问题。

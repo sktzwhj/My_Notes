@@ -1,0 +1,12 @@
+今天和Dr Wang讨论的关于我们接下来要解决的问题：
+
+1. dataset generation
+即其实对于fingerprint cache的局部性冲刷影响实际上需要很大数量的user的workload一起来才会显得出来。
+因而下一个阶段我们要解决的问题就是如何生成这些dataset。注意我们的dataset需要是面向1000TB级别的。
+
+
+2. estimation
+这里的estimation是说我们需要一个histogram，这个histogram会描述两个连续duplicate之间的时间间隔大致符合一个什么样的分布。
+
+3. hitogram guided cache deisgn 
+即我们有了这个hitogram，如何用这个信息去知道cache的设计呢？
