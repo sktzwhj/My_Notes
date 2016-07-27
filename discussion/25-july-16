@@ -10,3 +10,9 @@
 
 3. hitogram guided cache deisgn 
 即我们有了这个hitogram，如何用这个信息去知道cache的设计呢？
+
+关于这里，实际上会有一个linear programming的问题，输入是 
+a: 每个用户的data chunk的到达率
+b: 每个用户的duplicate ratio
+c: 用户之间的交叉
+limit: 总的cache大小受限于内存大小

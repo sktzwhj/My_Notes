@@ -1,0 +1,20 @@
+今天和王老师讨论了
+
+关于线性优化的量纲我们需要确认。
+
+我们能不能从histogram的角度考虑一下这个问题。
+
+关于cache的有效性度量应该使用: cache efficiency which can be expressed as cache hit count/total duplicates 
+
+但是total duplicates怎么获得呢？
+
+通过不同storage server反馈？
+
+考虑到局部性，我们需要考虑data routing的粒度和data dedupe的粒度须是不一样的。
+
+在router，我们可以判定一些duplicate所在的server。
+
+routing的粒度可能是package，一个duplicate以及其周围的非duplicate data（在router没有判定出来的）被一起route到那个
+duplicate的source data所在的storage server。那么有个问题是，如果一个data是duplicate，并且在router中就已经被判断
+出来了，那么其周围的数据如果满足局部性，那么在router中应该也会被检出。既然没有，那说明把他们放到哪里都是可以的。？
+
