@@ -1,0 +1,14 @@
+一批一批地把数据交给学习算法，然后可能得到一个固定的结果g。
+
+这叫做批处理式的学习。
+
+但是实际上我们可能在这个过程当中和机器有一些交互和反馈， 这种的循序的方法叫做online learning。
+
+比如感知器就很适合用在online learning中的。
+
+reinforcement learning通常是online learning。 
+
+但是这两种都是我们给数据，机器被动去学习。现在有一种学习方法是主动学习。也就是让机器来问问题。 
+
+active learning。 
+
