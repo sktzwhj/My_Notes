@@ -1,0 +1,29 @@
+Authors: Shengmei Luo et al. from Tsinghua U.
+Published in IEEE Trans on Cloud Computing 
+Date: 03/08/2016
+
+Basicly, I found this paper very similar to the one from Yinjin Fu published in Middleware'12
+
+Key ideas of this paper: 
+
+routing at the granularity of superchunks. 
+
+the representative chunks are chosen from aggregated chunks (called segment in this paper)
+
+And during the routing, the fingerprints of the representative chunks are also sent to the servers for deciding where 
+we can find more similarities. 
+
+Moreover, the fingerprint of the chosen representative segment is calculated according to MinHash so that Broder's theroem
+can be used to define the similarity. 
+
+Apart from this, the storage utilization is used to indicate the workload of a certain storage server. 
+
+(But we would argue that since they only consider the storage utilization but has not considered the load of read/write queue)
+
+This paper also introduces something about the dedupe on each local server. 
+
+From the perspective of router, there is a mds server which has routing engine in Boafft. However, in order to get the right
+server to route data. The router has to check all the servers to find the one who has both high similarity and reasonable 
+storage workload. 
+
+So the primary differences between our solutions and boffat could be how to decide to server to route. 
