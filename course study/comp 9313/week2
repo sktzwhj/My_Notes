@@ -1,0 +1,17 @@
+关于pair和stripe方法在co-occurrence问题当中的比较。
+
+虽然stripe方法可以减少mapreduce framework需要进行的sorting以及shuffle，但是因为要在内存中维护大量的数据，因而
+在大规模输入的情况下并不适用。另一方面，pair的方法则可以将这些中间结果写到本地文件系统当中去，总体而言，这种方法更加简单。
+
+课堂最后留了一个问题：
+
+can you combine "stripes" approach with in-mapper combiner?
+
+我的看法是，如果改成了stripes方法之后，直接用reducer当作combiner不就可以了？
+
+另一个老师上课没有说清楚的问题是关于 shuffle, sorting以及partition的区别。
+
+这里记录一下我自己的理解，partition做的事情实际上就是用hash或者类似的方法来计算一下kv pair应该去的reducer。
+shuffle在我们写代码的时候是看不到的，因为shuffle实际上是属于mapreduce framework的一部分。其任务是将data从mapper
+传输到reducer，sorting实际上是为了让reducer的效率更高一些，因为我们如果将key排好序，那么对于reducer来说处理按照key进行
+aggregation也会容易一些。
