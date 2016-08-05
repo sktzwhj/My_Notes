@@ -57,3 +57,9 @@ dedup, it is not a good choice to use batching and sampling. Because these may i
 log-structured file system is suitable. 
 
 Here, as NVRAM is used as the write log, the data would not be lost. consistency is guaranteed. 
+
+
+7月31日对于idedup的进一步理解:
+
+就metadata的cache来讲，我们的想法是用redis或者memcached就可以了，不过在idedup当中，作者使用了black-red tree来作为
+cache。 
