@@ -26,4 +26,5 @@ From the perspective of router, there is a mds server which has routing engine i
 server to route data. The router has to check all the servers to find the one who has both high similarity and reasonable 
 storage workload. 
 
-So the primary differences between our solutions and boffat could be how to decide to server to route. 
+So the primary differences between our solutions and boffat could be how to decide to server to route. Apart from this, 
+one important thing could be we consider users. 
