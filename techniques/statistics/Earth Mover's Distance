@@ -1,0 +1,31 @@
+Date: 09/08/2016
+
+
+Earth Mover's Distance 是一种直方图相似性的度量方法。
+
+对于理解这个定义，比较好的文章是：
+
+http://blog.csdn.net/wangdonggg/article/details/32329879
+
+这里将直方图抽象成signature的概念。 也就是s_j = (m_j, w_j)， 其中m表示类别中心，而w表示属于该类别的数量。 
+
+EMD本身是一个linear programming的问题， 假设有两个signature P and Q。 分别有m和n个类别。 
+
+P = {(p_1, w_p1),..., (p_m, w_pm)}
+
+Q = {(q_1, w_q1),...,(q_n, w_qn)}
+
+我们定义一个距离矩阵A， 其中的每一项 d_ij 表示p_i与q_j的距离。 那么这个A将会是一个m*n的矩阵。
+
+因此衡量EMD的目的就变成了找到一个矩阵A = [f_ij]， f_ij代表从p_i到q_j的流动数量， 从而最小化整体的代价
+函数。 
+
+WORK(P,1,F) = sigma_{i=1}^m(sigma_{j=1}^n d_ij*f_ij)
+
+然后我们又会有一系列的限定条件来约束
+
+比如 f_ij >= 0, sigma(f_ij) < w_pi, sigma(f_ij)<w_qi
+
+sigma(sigma(f_ij)) <= min(sigma(w_pi), sigma(w_qi))
+
+关于理解这几个公式，我觉得原博客当中搬土的说法非常直观。 
