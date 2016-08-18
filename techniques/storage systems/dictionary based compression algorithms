@@ -1,0 +1,7 @@
+Here, taking some notes about dictionary based compression algorithms like LZ algorithms. 
+
+This kind of algorithms encode the data by the existing data by using distance+length, the distance is the distance between 
+current data and its earlier occurrence while the length is the length of this repetition. 
+
+Some optimizations like zip also encode the distance by huffman coding. And there is some localities so that the distance may
+not be very long. 

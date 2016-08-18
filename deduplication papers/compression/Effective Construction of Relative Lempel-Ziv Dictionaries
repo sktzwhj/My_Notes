@@ -1,0 +1,14 @@
+Authors: Kewen Liao et al. from U of Melbourn 
+Published in WWW'16
+Date: 05/08/2016
+
+Dr Wang introduces this to me to inspire our design of cache management in our dedupe system. 
+
+The basic content of this paper is: 
+
+For LZ-like compression algorithms, the compression benefits vary from the dictionaries since they are dictionary based 
+compression algorithms. So we should find a good way to remove the strings in dictionary which do not occur very often. 
+In contrast, we keep more strings with high frequency to improve the efficiency of dictionary. 
+
+But I think it is not proper to adopt this method in our system because it is an offline method while our system is an inline
+system. 
