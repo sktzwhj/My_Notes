@@ -1,0 +1,14 @@
+Date: 01/09/2016
+
+如何理解Hive呢，实际上Hive就是一个逻辑的表视图。
+
+Hive需要用一个外部的关系数据库（比如derby）来存储元数据，这些元数据就是我们创建的视图，元数据还可能包括
+我们创建的partition。 
+
+觉得partition与HBase当中的region以及colume family概念有相似之处，区别大概在于前者是我们可以手动创建
+的，而后者是系统完成的。 
+
+一个partition其实就存储在HDFS中的一个目录当中。 
+
+最终存储数据的单位是buckets,bucket是根据hash划分的，目的是为了并行。 
+
