@@ -1,0 +1,16 @@
+mapreduce的设计模式
+
+four design patterns for mapreduce
+
+pairs
+
+stripes
+
+order inversion 
+让kv pairs到达reducer的顺序是去确定的
+
+value-to-key conversion 
+当我们需要按照value当中的一些东西进行排序的时候，就需要用这个， 注意这个时候我们需要对compareTo或者partitioner进行修改。 
+
+combiner与in-mapper combining的区别
+
