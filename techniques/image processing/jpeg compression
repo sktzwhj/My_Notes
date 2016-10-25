@@ -1,0 +1,20 @@
+A brief introduction about jpeg compression. 
+
+The basic process of jpeg compression is: 
+(1) partition the image data into 8x8 blocks. 
+(2) apply DCT transformation to transform the info from time domain to frequency domain.
+(3) apply quantization table on the data after transformation. 
+(4) apply entropy encoder to compress the data (huffman coding or arithmetic coding.)
+
+Acually, jpeg is a lossy compression method. It is mainly due to the quantization table. 
+
+Then some introduction about lepton compression. 
+
+Lepton is an open-source jpeg compression method proposed by Dropbox. 
+
+Because in jpeg, one of the 64 coefficient is DC which is 直流分量, this represents the brightness of the entire block of 
+8x8 pixels. The other 63 coeffients are the AC part. Jpeg also do some encoding on this part. So basicly, AC part is the 
+details of the image. 
+
+So why Lepton can get such good result? The reason is that it uses arithemetic encoding and the DC coefficient is lastly 
+encoded. 
