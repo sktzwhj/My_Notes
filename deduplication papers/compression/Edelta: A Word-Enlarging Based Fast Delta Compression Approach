@@ -2,6 +2,32 @@ Author: Wen Xia et al. from HUST
 Published in HotStorage'15
 Date: 17/06/2016
 
+
+word-content locality: Contiguous duplicate words appear in approximately the same order among the similar chunks 
+and files. 
+
+To this end, 当我们发现两个文件中有一个匹配的块的时候，我们就可以继续向后找，从而找到一个可能的更大的匹配．通过这种方式，我们就可以避免很多
+传统的冗余检测方式，比如哈希，索引．．．从而大幅度提高压缩性能．
+
+形象来说，delta compression就是用已经存储了的base file作为dictionary来表示新写入的文件．
+
+很多已有工作都认为，delta-compression是data deduplication的重要补充。
+
+tradeoff存在于编码速度和压缩比率：
+
+如何理解呢？
+
+本文中给出了Edelta的两个scheme:
+
+(1) word-enlarging 仅仅面向写入数据而不面向已经存在的数据
+
+(2) word-enlarging 面向两者 
+
+那么对于(1)来讲，压缩率会高一些， 但是编码速度会慢一点，因为需要用已经存在数据中的很小的单位来对新数据进行编码，好比说用字母为单位来组成一个
+新的单词。对于(2)来讲，编码速度会快一点，但是可能会损失一些细粒度的压缩。
+
+
+
 这篇文章最显著的贡献在于，当我们用delta-compression时，如果发现了一个字符的匹配，根据观察到的局部性，很有可能有更长的匹配，因此后面
 的就直接用字符级别的匹配而不用取算哈希什么的了。
 

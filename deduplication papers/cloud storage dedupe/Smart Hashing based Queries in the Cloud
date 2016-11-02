@@ -1,0 +1,16 @@
+Author: Yu Hua from HUST
+Published in IWQoS'15 (CCF rank B)
+Date: Nov 2nd, 2016
+
+本文强调了云备份很多特性，比如使用WAN而不是LAN。 比如频繁备份是不划算的。 
+
+在社交网络上分享照片是非常常见的用户行为， image数据成了很重要的数据， 但是照片可能就经过一些滤镜啊之类的东西， 原来dedupe系统当中那种粒度的去重
+在这种场景下就不好用了。 而且更重要的是， 在WAN的条件下， 传输这些照片去备份的代价也很高。 
+
+本文提出一个affinitiy, 但是和传统的局部性不同的是， affinity并没有什么时间或者空间上的意义。 
+
+affinity-aware design presents a suitable tradeoff between metadata (lightweight but less acccurate) and contents (more accurate
+but expensive) analysis. 
+
+Source system: Affinity-aware summary vectors (use PCA-SIFT)
+

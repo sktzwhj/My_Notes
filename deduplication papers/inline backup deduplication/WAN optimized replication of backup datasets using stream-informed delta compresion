@@ -2,27 +2,9 @@ Author: P. Shilane, et al. from EMC
 Published in FAST'12
 Date: 16/06/2016
 
-The core idea of this paper is: 
+11月重新回顾了这篇文章，也有一点新的想法。 
 
-word-content locality: Contiguous duplicate words appear in approximately the same order among the similar chunks 
-and files. 
+这篇文章最核心的思想就是说在像dedupe来re-load fingerprint cache的时候，我们也可以把similarity features也重新load进来。 
 
-To this end, 当我们发现两个文件中有一个匹配的块的时候，我们就可以继续向后找，从而找到一个可能的更大的匹配．通过这种方式，我们就可以避免很多
-传统的冗余检测方式，比如哈希，索引．．．从而大幅度提高压缩性能．
+因为small modified chunk和totally duplicate chunk的距离可能会比较近。 
 
-形象来说，delta compression就是用已经存储了的base file作为dictionary来表示新写入的文件．
-
-很多已有工作都认为，delta-compression是data deduplication的重要补充。
-
-tradeoff存在于编码速度和压缩比率：
-
-如何理解呢？
-
-本文中给出了Edelta的两个scheme:
-
-(1) word-enlarging 仅仅面向写入数据而不面向已经存在的数据
-
-(2) word-enlarging 面向两者 
-
-那么对于(1)来讲，压缩率会高一些， 但是编码速度会慢一点，因为需要用已经存在数据中的很小的单位来对新数据进行编码，好比说用字母为单位来组成一个
-新的单词。对于(2)来讲，编码速度会快一点，但是可能会损失一些细粒度的压缩。
