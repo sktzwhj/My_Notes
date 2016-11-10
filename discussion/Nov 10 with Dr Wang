@@ -1,0 +1,9 @@
+我们下一篇文章的主要研究点在于如何create一个专用存储系统。 
+
+如果我们能够把recommandation system的功能集成到storage system中的话， 我们就可以减少许多在推荐系统当中需要进行的计算。 
+
+我们可以考虑feature比较丰富的image数据以及video数据。 
+http://www.jianshu.com/p/605bb4fdff09
+image：
+
+color histogram, color set, 

@@ -1,0 +1,8 @@
+Author: Simone Milani from Univ. of Padova, Italy. 
+Published in Image and Vision Computing
+Date: Nov 10, 2016
+
+这篇文章的思想是压缩多个image，特别是在同一个地方的不同角度拍的照片。 
+
+事实上， 文章的idea就是利用视频压缩的办法来压缩一个图片序列。 但是因为视频压缩的特点，如果连续的两个image之间的差别过大的话，就很难获得较好的压缩效果。 
+因此，本文实际上就是在讲我们如何能够找到一个好的顺序来排列这些image。 
