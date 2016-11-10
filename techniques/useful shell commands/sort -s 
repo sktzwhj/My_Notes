@@ -1,0 +1,5 @@
+原来自己还用python去写这种二级排序的代码， 实际上，这么常见的功能在linux原生command当中已经提供了支持。 
+
+比如sort -t ' ' -k9,9 -k1n,1 home-all-sort > double_sort_home_all
+
+其功能就是先按照第九列排序，然后在此基础上按照第一列排序。 之前有一个awk的实现，相比这个就太慢了。 

@@ -1,0 +1,638 @@
+我们认真分析了FIU trace的一些特性。
+首先，我们将trace按照触发I/O的进程进行分类。 来自不同进程的unique ratio统计信息如下， 
+unique ratio for home-all-sort.dbus-daemon is 1.000000
+unique ratio for home-all-sort.vino-session is 1.000000
+unique ratio for home-all-sort.dirname is 1.000000
+unique ratio for home-all-sort.gij-4.2 is 0.500000
+unique ratio for home-all-sort.frontend is 0.213775
+unique ratio for home-all-sort.totem is 1.000000
+unique ratio for home-all-sort.sleep is 1.000000
+unique ratio for home-all-sort.dpkg is 0.910808
+unique ratio for home-all-sort.sync is 1.000000
+unique ratio for home-all-sort.sh is 1.000000
+unique ratio for home-all-sort.hald-addon-stor is 1.000000
+unique ratio for home-all-sort.sshd is 0.999481
+unique ratio for home-all-sort.amule is 0.958759
+unique ratio for home-all-sort.basename is 1.000000
+unique ratio for home-all-sort.apt-get is 0.127950
+unique ratio for home-all-sort.deskbar-applet is 0.920000
+unique ratio for home-all-sort.mixer_applet2 is 1.000000
+unique ratio for home-all-sort.ln is 1.000000
+unique ratio for home-all-sort.bonobo-activati is 1.000000
+unique ratio for home-all-sort.firefox is 0.863763
+unique ratio for home-all-sort.evince is 0.726485
+unique ratio for home-all-sort.pidgin is 1.000000
+unique ratio for home-all-sort.gnome-screensav is 0.983923
+unique ratio for processes.u is 1.000000
+unique ratio for home-all-sort.gcalctool is 0.875000
+unique ratio for home-all-sort.hald-addon-keyb is 1.000000
+unique ratio for processes is 0.000012
+unique ratio for home-all-sort.dpkg-preconfigu is 0.500341
+unique ratio for home-all-sort.gvfs-fuse-daemo is 1.000000
+unique ratio for home-all-sort.cupsd is 0.898133
+unique ratio for home-all-sort.skype is 0.989679
+unique ratio for home-all-sort.modprobe is 1.000000
+unique ratio for home-all-sort.date is 1.000000
+unique ratio for home-all-sort.ldd is 1.000000
+unique ratio for home-all-sort.dvips is 1.000000
+unique ratio for home-all-sort.ldconfig.real is 0.600000
+unique ratio for home-all-sort.gzip is 0.996488
+unique ratio for home-all-sort.dhcdbd is 1.000000
+unique ratio for home-all-sort.gnome-help is 0.881356
+unique ratio for home-all-sort.pdftops is 1.000000
+unique ratio for home-all-sort.gpgv is 0.500000
+unique ratio for home-all-sort.apt-check is 0.990832
+unique ratio for home-all-sort.firefox-bin is 0.885457
+unique ratio for home-all-sort.slideshow is 1.000000
+unique ratio for home-all-sort.gedit is 0.857143
+unique ratio for home-all-sort.latex is 1.000000
+unique ratio for home-all-sort.updatedb is 0.938776
+unique ratio for home-all-sort.ps is 1.000000
+unique ratio for home-all-sort.hald is 1.000000
+unique ratio for home-all-sort.gthumb is 1.000000
+unique ratio for home-all-sort.rhythmbox is 1.000000
+unique ratio for home-all-sort.java_vm is 1.000000
+unique ratio for home-all-sort.updatedb.mlocat is 1.000000
+unique ratio for home-all-sort.bluetooth-apple is 1.000000
+unique ratio for home-all-sort.gnome-panel is 0.977778
+unique ratio for home-all-sort.wpa_supplicant is 1.000000
+unique ratio for home-all-sort.kpsewhich is 1.000000
+unique ratio for home-all-sort.gnome-volume-ma is 1.000000
+unique ratio for home-all-sort.cut is 1.000000
+unique ratio for home-all-sort.sol is 1.000000
+unique ratio for home-all-sort.nmap is 1.000000
+unique ratio for home-all-sort.dpkg-deb is 1.000000
+unique ratio for home-all-sort.gnome-vfs-daemo is 1.000000
+unique ratio for home-all-sort.kswapd0 is 0.988889
+unique ratio for home-all-sort.slocate is 1.000000
+unique ratio for home-all-sort.nano is 1.000000
+unique ratio for home-all-sort.gnome-app-insta is 1.000000
+unique ratio for home-all-sort.pdflush is 0.526673
+unique ratio for home-all-sort.run-mozilla.sh is 1.000000
+unique ratio for home-all-sort.x-session-manag is 1.000000
+unique ratio for home-all-sort.thunderbird-bin is 0.700224
+unique ratio for home-all-sort.scrollkeeper-up is 0.998485
+unique ratio for home-all-sort.nm-applet is 1.000000
+unique ratio for home-all-sort.hald-addon-inpu is 1.000000
+unique ratio for home-all-sort.aplay is 1.000000
+unique ratio for home-all-sort.swapper is 0.710728
+unique ratio for home-all-sort.soffice is 1.000000
+unique ratio for home-all-sort.pstops is 1.000000
+unique ratio for home-all-sort.echo is 1.000000
+unique ratio for home-all-sort.readlink is 1.000000
+unique ratio for home-all-sort.sed is 1.000000
+unique ratio for home-all-sort.tracker-extract is 1.000000
+unique ratio for home-all-sort.syslogd is 0.992057
+unique ratio for home-all-sort.evolution is 0.051812
+unique ratio for home-all-sort.evolution-data- is 1.000000
+unique ratio for home-all-sort.du is 1.000000
+unique ratio for home-all-sort.seq is 1.000000
+unique ratio for home-all-sort.sudo is 1.000000
+unique ratio for home-all-sort.standard is 1.000000
+unique ratio for home-all-sort.tail is 1.000000
+unique ratio for home-all-sort.invoke-rc.d is 1.000000
+unique ratio for home-all-sort.wpasupplicant is 1.000000
+unique ratio for home-all-sort.ooqstart is 1.000000
+unique ratio for home-all-sort.libvorbisfile3. is 1.000000
+unique ratio for home-all-sort.apt-config is 0.500000
+unique ratio for home-all-sort.crontab is 1.000000
+unique ratio for home-all-sort.java is 0.949517
+unique ratio for home-all-sort.dpkg-statoverri is 0.555556
+unique ratio for home-all-sort.start-stop-daem is 1.000000
+unique ratio for home-all-sort.gimp is 1.000000
+unique ratio for home-all-sort.trackerd is 0.838543
+unique ratio for home-all-sort.NetworkManager is 1.000000
+unique ratio for home-all-sort.cc1 is 0.947368
+unique ratio for home-all-sort.emacs is 0.780702
+unique ratio for home-all-sort.mapping-daemon is 1.000000
+unique ratio for home-all-sort.find is 1.000000
+unique ratio for home-all-sort.w3m is 1.000000
+unique ratio for home-all-sort.gconftool-2 is 0.995899
+unique ratio for home-all-sort.apt is 0.666667
+unique ratio for home-all-sort.gnome-terminal is 1.000000
+unique ratio for home-all-sort.gksu is 1.000000
+unique ratio for home-all-sort.rhythmbox-metad is 0.192308
+unique ratio for home-all-sort.gnome-wm is 1.000000
+unique ratio for home-all-sort.anacron is 1.000000
+unique ratio for home-all-sort.pagein is 1.000000
+unique ratio for home-all-sort.awk is 1.000000
+unique ratio for home-all-sort.pulseaudio is 1.000000
+unique ratio for home-all-sort.check-foregroun is 1.000000
+unique ratio for home-all-sort.xkbcomp is 1.000000
+unique ratio for home-all-sort.trashapplet is 1.000000
+unique ratio for home-all-sort is 1.000000
+unique ratio for home-all-sort.bsdmainutils is 1.000000
+unique ratio for home-all-sort.uname is 1.000000
+unique ratio for home-all-sort.evolution-alarm is 1.000000
+unique ratio for home-all-sort.soffice.bin is 0.675926
+unique ratio for home-all-sort.dhclient-script is 1.000000
+unique ratio for home-all-sort.ipw3945d-2.6.22 is 1.000000
+unique ratio for home-all-sort.gnome-settings- is 1.000000
+unique ratio for home-all-sort.scp is 1.000000
+unique ratio for home-all-sort.chown is 1.000000
+unique ratio for home-all-sort.gimp-2.4 is 1.000000
+unique ratio for home-all-sort.troff is 1.000000
+unique ratio for home-all-sort.evince-thumbnai is 1.000000
+unique ratio for home-all-sort.dhclient is 1.000000
+unique ratio for home-all-sort.drivemount_appl is 1.000000
+unique ratio for home-all-sort.syslogd-listfil is 1.000000
+unique ratio for home-all-sort.restricted-mana is 1.000000
+unique ratio for home-all-sort.hald-runner is 1.000000
+unique ratio for home-all-sort.ls is 1.000000
+unique ratio for home-all-sort.rm is 1.000000
+unique ratio for home-all-sort.vim is 0.858108
+unique ratio for home-all-sort.hpijs is 1.000000
+unique ratio for home-all-sort.hp is 0.489362
+unique ratio for home-all-sort.hostname is 1.000000
+unique ratio for home-all-sort.synaptic is 0.517058
+unique ratio for home-all-sort.emacs22 is 0.751197
+unique ratio for home-all-sort.apt-key is 1.000000
+unique ratio for home-all-sort.nautilus is 0.994758
+unique ratio for home-all-sort.foomatic-rip is 1.000000
+unique ratio for home-all-sort.winbindd is 1.000000
+unique ratio for home-all-sort.javaldx is 1.000000
+unique ratio for home-all-sort.mv is 1.000000
+unique ratio for home-all-sort.eog is 0.975610
+unique ratio for home-all-sort.multiload-apple is 0.996198
+unique ratio for home-all-sort.backup.sh is 0.923077
+unique ratio for home-all-sort.update-notifier is 1.000000
+unique ratio for home-all-sort.editor is 1.000000
+unique ratio for home-all-sort.fast-user-switc is 1.000000
+unique ratio for home-all-sort.Xorg is 0.969856
+unique ratio for home-all-sort.console-kit-dae is 1.000000
+unique ratio for home-all-sort.ld is 0.866667
+unique ratio for home-all-sort.udevd is 1.000000
+unique ratio for home-all-sort.mkdir is 1.000000
+unique ratio for home-all-sort.apport is 0.983871
+unique ratio for home-all-sort.lsb_release is 1.000000
+unique ratio for home-all-sort.gs is 0.831933
+unique ratio for home-all-sort.metacity is 0.996479
+unique ratio for home-all-sort.gnome-open is 1.000000
+unique ratio for home-all-sort.gconfd-2 is 0.899371
+unique ratio for home-all-sort.gnome-power-man is 1.000000
+unique ratio for home-all-sort.gnome-screensho is 1.000000
+unique ratio for home-all-sort.dbus-send is 1.000000
+unique ratio for home-all-sort.nbd-server is 1.000000
+unique ratio for home-all-sort.apt-cache is 0.675772
+unique ratio for home-all-sort.xargs is 1.000000
+unique ratio for home-all-sort.grotty is 1.000000
+unique ratio for home-all-sort.gdmgreeter is 1.000000
+unique ratio for home-all-sort.cp is 1.000000
+unique ratio for home-all-sort.on_ac_power is 1.000000
+unique ratio for home-all-sort.http is 1.000000
+unique ratio for home-all-sort.svn is 0.999071
+unique ratio for home-all-sort.addr2line is 0.881356
+unique ratio for home-all-sort.bzip2 is 1.000000
+unique ratio for home-all-sort.totem-plugin-vi is 0.986564
+unique ratio for home-all-sort.man-db is 1.000000
+unique ratio for home-all-sort.gnome-keyring-d is 1.000000
+unique ratio for home-all-sort.collectd is 0.658654
+unique ratio for home-all-sort.notification-da is 1.000000
+unique ratio for home-all-sort.logrotate is 1.000000
+unique ratio for home-all-sort.mandb is 0.403054
+unique ratio for home-all-sort.cmp is 0.888889
+unique ratio for home-all-sort.update-manager is 0.984925
+unique ratio for home-all-sort.mmcqd is 0.932795
+unique ratio for home-all-sort.kjournald is 0.803576
+unique ratio for home-all-sort.umount is 1.000000
+unique ratio for home-all-sort.bash is 1.000000
+unique ratio for home-all-sort.cpio is 1.000000
+unique ratio for home-all-sort.evolution-excha is 0.571429
+unique ratio for home-all-sort.cat is 1.000000
+unique ratio for home-all-sort.cron is 1.000000
+unique ratio for home-all-sort.bibtex is 1.000000
+unique ratio for home-all-sort.as is 1.000000
+unique ratio for home-all-sort.scsi_eh_1 is 1.000000
+unique ratio for home-all-sort.sftp-server is 1.000000
+unique ratio for home-all-sort.eclipse is 0.904642
+unique ratio for home-all-sort.gnome-appearanc is 1.000000
+unique ratio for home-all-sort.run-parts is 1.000000
+unique ratio for home-all-sort.ssh is 1.000000
+unique ratio for home-all-sort.grep is 0.927083
+
+
+不同进程的数据量分析如下：
+         59 home-all-sort.addr2line
+         52 home-all-sort.addr2line.unique
+       7347 home-all-sort.amule
+       7044 home-all-sort.amule.unique
+          3 home-all-sort.anacron
+          3 home-all-sort.anacron.unique
+          3 home-all-sort.aplay
+          3 home-all-sort.aplay.unique
+         62 home-all-sort.apport
+         61 home-all-sort.apport.unique
+          3 home-all-sort.apt
+       6480 home-all-sort.apt-cache
+       4379 home-all-sort.apt-cache.unique
+       1418 home-all-sort.apt-check
+       1405 home-all-sort.apt-check.unique
+          2 home-all-sort.apt-config
+          1 home-all-sort.apt-config.unique
+     180696 home-all-sort.apt-get
+      23120 home-all-sort.apt-get.unique
+          1 home-all-sort.apt-key
+          1 home-all-sort.apt-key.unique
+          2 home-all-sort.apt.unique
+          7 home-all-sort.as
+          7 home-all-sort.as.unique
+          3 home-all-sort.awk
+          3 home-all-sort.awk.unique
+         13 home-all-sort.backup.sh
+         12 home-all-sort.backup.sh.unique
+          2 home-all-sort.basename
+          2 home-all-sort.basename.unique
+         10 home-all-sort.bash
+         10 home-all-sort.bash.unique
+          3 home-all-sort.bibtex
+          3 home-all-sort.bibtex.unique
+          1 home-all-sort.bluetooth-apple
+          1 home-all-sort.bluetooth-apple.unique
+          4 home-all-sort.bonobo-activati
+          4 home-all-sort.bonobo-activati.unique
+          1 home-all-sort.bsdmainutils
+          1 home-all-sort.bsdmainutils.unique
+          6 home-all-sort.bzip2
+          6 home-all-sort.bzip2.unique
+         19 home-all-sort.cat
+         19 home-all-sort.cat.unique
+         19 home-all-sort.cc1
+         18 home-all-sort.cc1.unique
+          1 home-all-sort.check-foregroun
+          1 home-all-sort.check-foregroun.unique
+          4 home-all-sort.chown
+          4 home-all-sort.chown.unique
+          9 home-all-sort.cmp
+          8 home-all-sort.cmp.unique
+        208 home-all-sort.collectd
+        137 home-all-sort.collectd.unique
+          4 home-all-sort.console-kit-dae
+          4 home-all-sort.console-kit-dae.unique
+          2 home-all-sort.cp
+          1 home-all-sort.cpio
+          1 home-all-sort.cpio.unique
+          2 home-all-sort.cp.unique
+          2 home-all-sort.cron
+          2 home-all-sort.crontab
+          2 home-all-sort.crontab.unique
+          2 home-all-sort.cron.unique
+       6214 home-all-sort.cupsd
+       5581 home-all-sort.cupsd.unique
+          2 home-all-sort.cut
+          2 home-all-sort.cut.unique
+          2 home-all-sort.date
+          2 home-all-sort.date.unique
+         27 home-all-sort.dbus-daemon
+         27 home-all-sort.dbus-daemon.unique
+          1 home-all-sort.dbus-send
+          1 home-all-sort.dbus-send.unique
+         25 home-all-sort.deskbar-applet
+         23 home-all-sort.deskbar-applet.unique
+          6 home-all-sort.dhcdbd
+          6 home-all-sort.dhcdbd.unique
+          2 home-all-sort.dhclient
+          2 home-all-sort.dhclient-script
+          2 home-all-sort.dhclient-script.unique
+          2 home-all-sort.dhclient.unique
+          2 home-all-sort.dirname
+          2 home-all-sort.dirname.unique
+      25406 home-all-sort.dpkg
+         29 home-all-sort.dpkg-deb
+         29 home-all-sort.dpkg-deb.unique
+       1467 home-all-sort.dpkg-preconfigu
+        734 home-all-sort.dpkg-preconfigu.unique
+          9 home-all-sort.dpkg-statoverri
+          5 home-all-sort.dpkg-statoverri.unique
+      23140 home-all-sort.dpkg.unique
+          1 home-all-sort.drivemount_appl
+          1 home-all-sort.drivemount_appl.unique
+          1 home-all-sort.du
+          1 home-all-sort.du.unique
+          2 home-all-sort.dvips
+          2 home-all-sort.dvips.unique
+          3 home-all-sort.echo
+          3 home-all-sort.echo.unique
+       2391 home-all-sort.eclipse
+       2163 home-all-sort.eclipse.unique
+          4 home-all-sort.editor
+          4 home-all-sort.editor.unique
+        114 home-all-sort.emacs
+       7311 home-all-sort.emacs22
+       5492 home-all-sort.emacs22.unique
+         89 home-all-sort.emacs.unique
+        164 home-all-sort.eog
+        160 home-all-sort.eog.unique
+      21933 home-all-sort.evince
+          2 home-all-sort.evince-thumbnai
+          2 home-all-sort.evince-thumbnai.unique
+      15934 home-all-sort.evince.unique
+     143750 home-all-sort.evolution
+          4 home-all-sort.evolution-alarm
+          4 home-all-sort.evolution-alarm.unique
+          7 home-all-sort.evolution-data-
+          7 home-all-sort.evolution-data-.unique
+          7 home-all-sort.evolution-excha
+          4 home-all-sort.evolution-excha.unique
+       7448 home-all-sort.evolution.unique
+          7 home-all-sort.fast-user-switc
+          7 home-all-sort.fast-user-switc.unique
+          2 home-all-sort.find
+          2 home-all-sort.find.unique
+     423182 home-all-sort.firefox
+     332914 home-all-sort.firefox-bin
+     294781 home-all-sort.firefox-bin.unique
+     365529 home-all-sort.firefox.unique
+         17 home-all-sort.foomatic-rip
+         17 home-all-sort.foomatic-rip.unique
+       3354 home-all-sort.frontend
+        717 home-all-sort.frontend.unique
+         16 home-all-sort.gcalctool
+         14 home-all-sort.gcalctool.unique
+        159 home-all-sort.gconfd-2
+        143 home-all-sort.gconfd-2.unique
+       4633 home-all-sort.gconftool-2
+       4614 home-all-sort.gconftool-2.unique
+         18 home-all-sort.gdmgreeter
+         18 home-all-sort.gdmgreeter.unique
+         14 home-all-sort.gedit
+         12 home-all-sort.gedit.unique
+          4 home-all-sort.gij-4.2
+          2 home-all-sort.gij-4.2.unique
+         23 home-all-sort.gimp
+         29 home-all-sort.gimp-2.4
+         29 home-all-sort.gimp-2.4.unique
+         23 home-all-sort.gimp.unique
+          1 home-all-sort.gksu
+          1 home-all-sort.gksu.unique
+         25 home-all-sort.gnome-appearanc
+         25 home-all-sort.gnome-appearanc.unique
+          6 home-all-sort.gnome-app-insta
+          6 home-all-sort.gnome-app-insta.unique
+         59 home-all-sort.gnome-help
+         52 home-all-sort.gnome-help.unique
+          1 home-all-sort.gnome-keyring-d
+          1 home-all-sort.gnome-keyring-d.unique
+          2 home-all-sort.gnome-open
+          2 home-all-sort.gnome-open.unique
+        900 home-all-sort.gnome-panel
+        880 home-all-sort.gnome-panel.unique
+         28 home-all-sort.gnome-power-man
+         28 home-all-sort.gnome-power-man.unique
+        311 home-all-sort.gnome-screensav
+        306 home-all-sort.gnome-screensav.unique
+          3 home-all-sort.gnome-screensho
+          3 home-all-sort.gnome-screensho.unique
+         47 home-all-sort.gnome-settings-
+         47 home-all-sort.gnome-settings-.unique
+         77 home-all-sort.gnome-terminal
+         77 home-all-sort.gnome-terminal.unique
+         11 home-all-sort.gnome-vfs-daemo
+         11 home-all-sort.gnome-vfs-daemo.unique
+         13 home-all-sort.gnome-volume-ma
+         13 home-all-sort.gnome-volume-ma.unique
+          1 home-all-sort.gnome-wm
+          1 home-all-sort.gnome-wm.unique
+         12 home-all-sort.gpgv
+          6 home-all-sort.gpgv.unique
+         96 home-all-sort.grep
+         89 home-all-sort.grep.unique
+          1 home-all-sort.grotty
+          1 home-all-sort.grotty.unique
+        238 home-all-sort.gs
+        198 home-all-sort.gs.unique
+          7 home-all-sort.gthumb
+          7 home-all-sort.gthumb.unique
+         11 home-all-sort.gvfs-fuse-daemo
+         11 home-all-sort.gvfs-fuse-daemo.unique
+       3986 home-all-sort.gzip
+       3972 home-all-sort.gzip.unique
+         21 home-all-sort.hald
+          2 home-all-sort.hald-addon-inpu
+          2 home-all-sort.hald-addon-inpu.unique
+          2 home-all-sort.hald-addon-keyb
+          2 home-all-sort.hald-addon-keyb.unique
+         87 home-all-sort.hald-addon-stor
+         87 home-all-sort.hald-addon-stor.unique
+          1 home-all-sort.hald-runner
+          1 home-all-sort.hald-runner.unique
+         21 home-all-sort.hald.unique
+          1 home-all-sort.hostname
+          1 home-all-sort.hostname.unique
+         47 home-all-sort.hp
+        121 home-all-sort.hpijs
+        121 home-all-sort.hpijs.unique
+         23 home-all-sort.hp.unique
+         40 home-all-sort.http
+         40 home-all-sort.http.unique
+          1 home-all-sort.invoke-rc.d
+          1 home-all-sort.invoke-rc.d.unique
+         57 home-all-sort.ipw3945d-2.6.22
+         57 home-all-sort.ipw3945d-2.6.22.unique
+       3724 home-all-sort.java
+          8 home-all-sort.javaldx
+          8 home-all-sort.javaldx.unique
+       3536 home-all-sort.java.unique
+        270 home-all-sort.java_vm
+        270 home-all-sort.java_vm.unique
+   11492848 home-all-sort.kjournald
+    9235379 home-all-sort.kjournald.unique
+          8 home-all-sort.kpsewhich
+          8 home-all-sort.kpsewhich.unique
+        360 home-all-sort.kswapd0
+        356 home-all-sort.kswapd0.unique
+          4 home-all-sort.latex
+          4 home-all-sort.latex.unique
+         15 home-all-sort.ld
+         65 home-all-sort.ldconfig.real
+         39 home-all-sort.ldconfig.real.unique
+          1 home-all-sort.ldd
+          1 home-all-sort.ldd.unique
+         13 home-all-sort.ld.unique
+          1 home-all-sort.libvorbisfile3.
+          1 home-all-sort.libvorbisfile3..unique
+          1 home-all-sort.ln
+          1 home-all-sort.ln.unique
+          1 home-all-sort.logrotate
+          1 home-all-sort.logrotate.unique
+          4 home-all-sort.ls
+          2 home-all-sort.lsb_release
+          2 home-all-sort.lsb_release.unique
+          4 home-all-sort.ls.unique
+       3012 home-all-sort.mandb
+          1 home-all-sort.man-db
+          1 home-all-sort.man-db.unique
+       1214 home-all-sort.mandb.unique
+          1 home-all-sort.mapping-daemon
+          1 home-all-sort.mapping-daemon.unique
+        284 home-all-sort.metacity
+        283 home-all-sort.metacity.unique
+          7 home-all-sort.mixer_applet2
+          7 home-all-sort.mixer_applet2.unique
+          1 home-all-sort.mkdir
+          1 home-all-sort.mkdir.unique
+       8541 home-all-sort.mmcqd
+       7967 home-all-sort.mmcqd.unique
+          9 home-all-sort.modprobe
+          9 home-all-sort.modprobe.unique
+        263 home-all-sort.multiload-apple
+        262 home-all-sort.multiload-apple.unique
+          1 home-all-sort.mv
+          1 home-all-sort.mv.unique
+          1 home-all-sort.nano
+          1 home-all-sort.nano.unique
+       4769 home-all-sort.nautilus
+       4744 home-all-sort.nautilus.unique
+         42 home-all-sort.nbd-server
+         42 home-all-sort.nbd-server.unique
+          4 home-all-sort.NetworkManager
+          4 home-all-sort.NetworkManager.unique
+         14 home-all-sort.nmap
+        116 home-all-sort.nm-applet
+        116 home-all-sort.nm-applet.unique
+         14 home-all-sort.nmap.unique
+         26 home-all-sort.notification-da
+         26 home-all-sort.notification-da.unique
+          1 home-all-sort.on_ac_power
+          1 home-all-sort.on_ac_power.unique
+          2 home-all-sort.ooqstart
+          2 home-all-sort.ooqstart.unique
+         17 home-all-sort.pagein
+         17 home-all-sort.pagein.unique
+    4336439 home-all-sort.pdflush
+    2283887 home-all-sort.pdflush.unique
+          2 home-all-sort.pdftops
+          2 home-all-sort.pdftops.unique
+         35 home-all-sort.pidgin
+         35 home-all-sort.pidgin.unique
+          3 home-all-sort.ps
+          2 home-all-sort.pstops
+          2 home-all-sort.pstops.unique
+          3 home-all-sort.ps.unique
+          9 home-all-sort.pulseaudio
+          9 home-all-sort.pulseaudio.unique
+         64 home-all-sort.python
+          1 home-all-sort.readlink
+          1 home-all-sort.readlink.unique
+         32 home-all-sort.restricted-mana
+         32 home-all-sort.restricted-mana.unique
+        182 home-all-sort.rhythmbox
+         26 home-all-sort.rhythmbox-metad
+          5 home-all-sort.rhythmbox-metad.unique
+        182 home-all-sort.rhythmbox.unique
+          2 home-all-sort.rm
+          2 home-all-sort.rm.unique
+          1 home-all-sort.run-mozilla.sh
+          1 home-all-sort.run-mozilla.sh.unique
+          1 home-all-sort.run-parts
+          1 home-all-sort.run-parts.unique
+         39 home-all-sort.scp
+         39 home-all-sort.scp.unique
+        660 home-all-sort.scrollkeeper-up
+        659 home-all-sort.scrollkeeper-up.unique
+         85 home-all-sort.scsi_eh_1
+         85 home-all-sort.scsi_eh_1.unique
+          1 home-all-sort.sed
+          1 home-all-sort.sed.unique
+          1 home-all-sort.seq
+          1 home-all-sort.seq.unique
+        133 home-all-sort.sftp-server
+        133 home-all-sort.sftp-server.unique
+          7 home-all-sort.sh
+          7 home-all-sort.sh.unique
+       2616 home-all-sort.skype
+       2589 home-all-sort.skype.unique
+          1 home-all-sort.sleep
+          1 home-all-sort.sleep.unique
+          3 home-all-sort.slideshow
+          3 home-all-sort.slideshow.unique
+         61 home-all-sort.slocate
+         61 home-all-sort.slocate.unique
+          1 home-all-sort.soffice
+       1188 home-all-sort.soffice.bin
+        803 home-all-sort.soffice.bin.unique
+          1 home-all-sort.soffice.unique
+          3 home-all-sort.sol
+          3 home-all-sort.sol.unique
+      10182 home-all-sort.ssh
+       3856 home-all-sort.sshd
+       3854 home-all-sort.sshd.unique
+      10182 home-all-sort.ssh.unique
+          1 home-all-sort.standard
+          1 home-all-sort.standard.unique
+          4 home-all-sort.start-stop-daem
+          4 home-all-sort.start-stop-daem.unique
+          1 home-all-sort.sudo
+          1 home-all-sort.sudo.unique
+       9688 home-all-sort.svn
+       9679 home-all-sort.svn.unique
+     569955 home-all-sort.swapper
+     405083 home-all-sort.swapper.unique
+       6771 home-all-sort.synaptic
+       3501 home-all-sort.synaptic.unique
+         39 home-all-sort.sync
+         39 home-all-sort.sync.unique
+     177899 home-all-sort.syslogd
+          2 home-all-sort.syslogd-listfil
+          2 home-all-sort.syslogd-listfil.unique
+     176486 home-all-sort.syslogd.unique
+        137 home-all-sort.tail
+        137 home-all-sort.tail.unique
+        447 home-all-sort.thunderbird-bin
+        313 home-all-sort.thunderbird-bin.unique
+         14 home-all-sort.totem
+        521 home-all-sort.totem-plugin-vi
+        514 home-all-sort.totem-plugin-vi.unique
+         14 home-all-sort.totem.unique
+      13341 home-all-sort.trackerd
+      11187 home-all-sort.trackerd.unique
+          1 home-all-sort.tracker-extract
+          1 home-all-sort.tracker-extract.unique
+          4 home-all-sort.trashapplet
+          4 home-all-sort.trashapplet.unique
+          1 home-all-sort.troff
+          1 home-all-sort.troff.unique
+          4 home-all-sort.udevd
+          4 home-all-sort.udevd.unique
+          1 home-all-sort.umount
+          1 home-all-sort.umount.unique
+          2 home-all-sort.uname
+          2 home-all-sort.uname.unique
+   17836701 home-all-sort.unique
+         49 home-all-sort.updatedb
+          3 home-all-sort.updatedb.mlocat
+          3 home-all-sort.updatedb.mlocat.unique
+         46 home-all-sort.updatedb.unique
+        199 home-all-sort.update-manager
+        196 home-all-sort.update-manager.unique
+         26 home-all-sort.update-notifier
+         26 home-all-sort.update-notifier.unique
+        296 home-all-sort.vim
+        254 home-all-sort.vim.unique
+          2 home-all-sort.vino-session
+          2 home-all-sort.vino-session.unique
+          3 home-all-sort.w3m
+          3 home-all-sort.w3m.unique
+          2 home-all-sort.winbindd
+          2 home-all-sort.winbindd.unique
+          1 home-all-sort.wpasupplicant
+          4 home-all-sort.wpa_supplicant
+          4 home-all-sort.wpa_supplicant.unique
+          1 home-all-sort.wpasupplicant.unique
+          1 home-all-sort.xargs
+          1 home-all-sort.xargs.unique
+          1 home-all-sort.xkbcomp
+          1 home-all-sort.xkbcomp.unique
+      10682 home-all-sort.Xorg
+      10360 home-all-sort.Xorg.unique
+          3 home-all-sort.x-session-manag
+          3 home-all-sort.x-session-manag.unique
+   17836701 processes
+        218 processes.u
+        218 processes.unique
+        218 processes.u.unique
+        210 statistics
+         38 trace_analysis.py
+
+         
+         
+         
