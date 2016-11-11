@@ -1,0 +1,13 @@
+python with 相当于 try finally 
+
+比如我们在进行文件操作的时候，需要显式地关掉文件，如果用了with，这个就可以简化了。 
+
+比如说：
+
+  with open("myfile.txt") as f:
+     for line in f:
+         print (line)
+         
+ 在这个语句执行之后，再对f进行什么操作就会报异常了，因为f已经被释放了。　
+ 
+ 同样，这也可以用在lock的场景中，在临界区代码执行结束后，我们就没必要再释放锁了。　
