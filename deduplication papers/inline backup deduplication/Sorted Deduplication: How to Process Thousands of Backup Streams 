@@ -20,3 +20,7 @@ In general, the idea of this paper is to sort the streams to avoid random access
 Another interesting thing mentioned in this paper is about dedup in distributed enviroment. The client firstly send the 
 fingerprints to the servers. The servers check the existence of these fingerprints and give some feedback. To this end, 
 only the data which is not duplicated needs to be transfered so that the traffic is saved. 
+
+11月14日重新读了这篇paper，这里记录一些新的理解。　
+
+LSM-tree结构是在服务器一侧维护的，　
