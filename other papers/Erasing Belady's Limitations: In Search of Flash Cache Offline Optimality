@@ -1,0 +1,8 @@
+Author: Yue Cheng, Fred Douglis, Philip Shilane, Michael Trachtman and Grant Wallace Peter Desnoyers and Kai Li
+mainly from EMC
+Published in ATC'16
+Date: Nov. 25, 2016
+
+这篇文章是说在一个把Flash作为cache的应用场景下，考虑到flash寿命受到擦写次数的严重影响，因此我们就需要一种在不显著降低缓存命中率的情况下减少对flash的
+擦写次数的方法。本文的解决方案是一种离线算法，具体来说，因为这里的cache实际上指的是SSD之类的非易失的NAND flash，那么我们就可以离线去检查每一个缓存项
+从而可以将一些命中率比较低的项离线去除掉。 
