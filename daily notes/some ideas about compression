@@ -1,0 +1,13 @@
+如果我们现在把场景定位放在IaaS当中的vm image的压缩，比较明显的问题就是，我们需要和deduplication进行比较。 
+
+值得思考的几个问题：
+１. data deduplication是否可以有效挖掘data内部的不同呢？根据[Cornel Constantinescu et al. DCC 2011]，貌似效果也是不错的。但是这篇文章当中
+用的是gzip这样的小窗口而且是基于LZ77的压缩算法，对于7z这种压缩来说，dedupe的效果显然不见得更好。　
+
+2. 另一个值得关注的问题在于，因为deduplication经常把文件打成很多碎块，这样使得fragmentation的情况比较严重。　相应地，读性能就会受到比较严重的影响，
+我们不能把一切都寄希望于SSD这样的硬件，不管怎么说，如果我们能够降低fragmentation应该也算是比较重要的contribution。　
+
+３. 关于1，在[Xing Lin et al. FAST 2014]中有一些讨论。　
+
+４. 我们认为，像deduplication这样打成小块去找，会造成严重的fragmentation。但这种顺序的压缩就不会。而且在我们设想的第二步压缩中，如果想要避免大的数据
+替换，我们可以只替换那些长的串就可以。　　
