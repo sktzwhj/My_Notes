@@ -1,0 +1,9 @@
+最近在用HUST Min Fu的destor，因为自己写C代码比较少，在编译的时候遇到了一点小问题。 
+
+在实际的C项目中，Makefile不可能是靠手写的，繁琐而且容易出错。 因此其实是有一系列工具来完成这个的。 
+
+http://www.jellythink.com/archives/1056
+
+这篇博客讲得比较清楚。 
+
+大概的工具链包括automake, autoconf, m4 以及libtool
