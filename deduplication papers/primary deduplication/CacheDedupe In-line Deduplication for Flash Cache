@@ -1,0 +1,8 @@
+Authors: Wenji Li, Gregory Jean-Baptise et al. from Arizona State University, FIU etc. 
+Published in FAST'16
+Date: Dec. 16th, 2016. 
+
+本文针对的是用flash作为cache的一种存储结构。 作者认为直接将ssd cache和deduplication合在一起并不合适，因此提出这个工作。 
+
+其主要考虑是ssd的寿命等问题，减少重复数据的cache，可以延长ssd的寿命，也可以提高IO性能。 
+

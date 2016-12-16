@@ -1,0 +1,4 @@
+ARC (Adaptive Replacement Cache)
+
+这是一种介于LRU与LFU之间的缓存替换策略。 
+简单来说，ARC包含两个LRU，第一个，也就是L1，包含最近被使用过一次的缓存项，第二个LRU，包含最近被使用过两次的项目。 
