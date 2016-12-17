@@ -1,0 +1,10 @@
+我们要改的方面主要包括：
+
+1. motivation
+强调多个virtual machines 运行在一个共享的存储上的环境。 
+
+我们强调每个virtual machine可能运行不一样的服务，这样duplicate ratio会很不一样。 
+
+我们不能简单地不对哪个virtual machine来的trace不做dedupe，因为即使对于一个
+
+2. 实验，trace

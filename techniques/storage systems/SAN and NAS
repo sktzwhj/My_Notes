@@ -1,0 +1,3 @@
+SAN是存储区域网络，在一些企业级的集群里面用。 典型来说，SAN本身是SCSI连接的很多盘。
+
+而NAS则是network attached storage，也就是网络附属的存储，就是用网络连着的一块盘。 

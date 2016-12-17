@@ -32,3 +32,7 @@ significantly influence the read performance. (note that sequ)
 We can regard this as a cache manager. This is very similar to what we want to do. The basic idea
 is to calculate the cost-beneift value of two cache( index (fingerprint) or read cache ). Therefore, 
 the  more hits a cache can get, the larger size the cache should be. 
+
+Dec 16重新读POD又有了一些新的理解。 
+首先，这篇文章通过FIU的trace发现，duplicate I/O on the same address在重复的写操作中占据的比例非常高。 实际上，deduplicate这些
+实际上可以提高IO性能而且不会导致fragmentation。 而且这样的写操作又往往是小的写操作，在iDedup这样的系统中是没有被充分考虑的。 
