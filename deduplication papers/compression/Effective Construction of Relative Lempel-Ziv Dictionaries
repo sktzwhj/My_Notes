@@ -12,3 +12,7 @@ In contrast, we keep more strings with high frequency to improve the efficiency 
 
 But I think it is not proper to adopt this method in our system because it is an offline method while our system is an inline
 system. 
+
+这篇文章有一些思想是值得借鉴的，比如说本文用k-mers来进行segment coverage的分析。很大程度上简化了这个问题。　
+
+RLZ相对于传统的LZ，支持一定程度上的伪随机访问是其特点。　
