@@ -1,0 +1,12 @@
+在做HPDedupe的时候对以前的文献进行了更加具体的阅读，思考了一些问题，在这里记录一下。　
+
+在POD中，LBA mapping是存在NVRAM当中的，那么对于比较大的存储，NVRAM是不是够用呢，并且价格是不是太高了呢？
+
+另外在iDedup当中也使用到了NVRAM，不过在这里是用来降低I/O延迟的。　
+
+所以我认为NVRAM的正确用法应该是，　
+
+将PBA->ref count与LBA->PBA两个东西用NVRAM来进行缓存。不但可以提高性能而且可以避免不一致的问题。
+
+然后在数据写到SSD上面的data buffer的时候，也要提一句reference count是检查了的。有reference count的是要进行
+CoW的。　
