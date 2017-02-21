@@ -1,0 +1,8 @@
+Authors: Dulcardo Arteaga, Jorge Cabrera from FIU, Jing Xu from VMWare, Swaminathan Sundararaman from Parallel Machines and 
+Ming Zhao from Arizona State University
+Published in FAST'16
+Date: Feb 15, 2017
+
+这篇文章和我们投到MSST17的文章思路很像，我们也是很不容易才找到了cloud computing这个好背景。　
+
+本文也提出了on-demand的缓存管理方式，并且提出了一个reuse working set的概念。　
