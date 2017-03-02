@@ -1,0 +1,20 @@
+LIRS缓存来自2002年FAST中Song Jiang的文章。　
+
+其实可以从这些文章中总结出一种规律，对于缓存的改进文章，一般就是找到一些历史信息并加以应用。　
+
+LIRS就是在LRU仅仅利用recency的基础上提出一种IRR (Inter-Reference Recency)。 
+
+和recency相比，IRR是说一个数据两次被访问之间的距离,recency是数据上次访问到现在的距离，这里距离都是用不重复的其它数据块的数量来定义的。 
+
+理解LIRS相对于LRU的优势，我觉得可以从文章中提出的场景来考虑。 对于LRU来说，一旦数据被踢出去了，其历史信息也就没有了。 
+
+关于如何理解LIRS，总的来讲把握以下几点：
+(1) stack里面包含所有的blocks，而且都是IRR>Rmax的。但是有一种特殊情况就是，如果一个HIR block原来是resistent的，那么如果其被踢出去，那么一个空
+的block依然会保留在栈里面。这样的设计应该是为了捕捉这个block立马会被再次访问的局部性。　
+(2)queue Q就是一个index而已，　索引了所有的resident HIR　blocks。　
+(3)和LRU相比，LIRS会把那种file scan模式的访问在HIR　block当中踢来踢去。而不会影响到LIR部分。　
+(4)按照TC那篇文章里面的说法，有一些resident HIR可能会不在stack S当中，但是how it comes?
+Answer:从slides里面的图来看，resident讲的是是否resident在cache中,那么完全可以是resident在cache中但是不在LIR stack中。　
+
+总体感觉，在stack中的就说明最近访问过，还可以参与到IRR的比较中来，对于那些在cache但是不在stack中的data来说，他们已经过气了，随时等待被淘汰出去了。　
+
