@@ -1,0 +1,37 @@
+Authors: Cristian Bucila et al from Cornell U.
+Published in KDD'06
+Date: March 17th, 2017
+
+
+The main idea of model compression is to use fast and compact model to approximate the function learned by a slower, larger
+but better perfroming model. 
+
+Ensemble learning
+通过多个分类器对数据进行预测，从而提高分类器的泛化能力。
+感觉集成学习其实就像是多人投票，三个臭皮匠顶个诸葛亮的模式。
+
+本文尝试解决的问题是这些监督学习如果采用的集成学习的方法（同样适用于深度学习），那么学习出来的模型可能会比较大。　
+
+集成学习还有一个重要的问题就是慢。。。因为投票的原理，所有的模型都需要运行。
+
+这篇文章里面讲的压缩和15年那篇ICLR用剪枝、huffman树的方法还不太一样。实际上，他是说用一个神经网络去模拟集成学习的模型。　
+
+那么既然是要训练神经网络，就牵扯到数据从什么地方来的问题。可能性有两种：
+
+1. 直接用训练集合学习的数据
+
+但是这个数据集一般都太小，因此不利于训练
+
+2. 生成数据
+
+那么如何保证生成的数据不会误导新模型的训练呢？
+
+因此生成这些新数据又有几种可选的方案：
+
+1. RANDOM
+在每一个attribute的分布中独立选择值
+
+2. NBE
+考虑attribute之间的joint distribution (think about a 2-D probability distribution figure.)
+
+3. MUNGE
