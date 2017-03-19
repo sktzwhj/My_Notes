@@ -35,3 +35,5 @@ Ensemble learning
 考虑attribute之间的joint distribution (think about a 2-D probability distribution figure.)
 
 3. MUNGE
+考虑到准确估计joint distribution比较困难，MUNGE的方法实际上是在每个样本点附近找点。。。不过为什么我觉得在样本点附近的点对提高模型训练精确度的
+贡献会比较有限呢？
