@@ -1,0 +1,11 @@
+可以把input作为对weight的一种约束。　
+
+perceptron的训练方法实际上很简单。但是这种方法并不适合于推广到很多其他很假复杂的，比如非线性的网络。　
+
+采用cost function 的这种方法更加接近人类的思考方式，也更加自然。　
+
+重新理解一下back propagation的东西。
+
+因为我们需要train这个网络，用梯度下降的方法。那么我们就需要求dE/dw_ij，这里E是cost function。　
+
+但是问题在于直接算比较困难。　
