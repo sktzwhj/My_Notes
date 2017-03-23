@@ -1,0 +1,7 @@
+RLZ主要针对的场景包括gene与IR的一些场景。 
+
+其实可以把RLZ理解为在LZ的替换过程中，只用从数据本身中抽取的一些子序列来作为字典。而不像LZ算法那样动态生成字典。 
+
+对于两个string T和S，LZ factorization (or parsing) of T relative to S LZ(T|S) = w_0w_1w_2...w_z where w_i is either (a) a letter 
+which does not occur in S or otherwise (b) the longest prefix of T that occurs as a substring of S. 
+

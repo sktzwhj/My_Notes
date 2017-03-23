@@ -1,0 +1,16 @@
+Authors: Florian Tramer, Fan Zhang et al. from EPFL, Cornell U, etc. 
+Published in USENIX Security'16
+Date: March 22nd, 2017
+
+这篇文章大概是说，我们可以通过一个ML的prediction model对于请求的响应来猜出这个model的参数从而达到steal model的目的。　
+
+具体来说，针对ML-as-a-Service这种场景下，是非常有意义的，因为model就是核心财产。　
+
+attack model: 
+1. steal the model to freely use it in the future. 
+2. leak the precious training data
+3. cheat the ML algorithm by understanding it. 
+
+Equation sovling attack:
+这种场景下，我们可以得到(x, f(x))的很多预测值, f就是被偷的model。　
+
