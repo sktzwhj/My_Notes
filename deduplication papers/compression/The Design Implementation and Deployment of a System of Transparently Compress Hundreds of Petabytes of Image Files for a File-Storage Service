@@ -1,0 +1,7 @@
+Authors: Daniel Reiter Horn et al. from Dropbox and Stanford. 
+Published in NSDI'17
+Date: March 29, 2017
+
+这是关于lepton的paper，关于lepton的内容去年7月dropbox在他们的blog中已经公布了，这篇可以说是关于技术细节的一个描述。 
+
+lepton的根本思想其实就是用arithemetic coding来替代huffman coding。 

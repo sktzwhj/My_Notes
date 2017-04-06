@@ -1,0 +1,8 @@
+对于tensorflow来说，session包含了要运行的流图，然后初始化变量之后，session.run()就会运行相应的流图。 
+
+需要注意的是，对于每一次的调用，数据在流图中相当于跑了一遍。 
+
+TensorBoard是一个很好的tensorflow的可视化工具。 
+
+tf.reduce_mean() 就是返回tensor t中各个元素的平均值
+reduce就按照mapreduce的这种形式来理解就比较直观了。
