@@ -11,6 +11,16 @@ attack model:
 2. leak the precious training data
 3. cheat the ML algorithm by understanding it. 
 
+对于攻击者来说，其目标就是用尽可能少的quries来找到一个和原来的模型尽可能拟合的一个模型。　
+
+那么我们如何定义这种相似呢？
+
+Test error R_{test} = \Simga_{(x,y) belongsto D}(d(f(x),f'(x)))/D
+
+Uniform error R_{unif}: For a set uniformly chosen from X, R_{unif} = \Sigma_{x belongsto U}d(f(x),f'(x))/|U|. 
+
 Equation sovling attack:
+由于本文关注的是classification的问题，这种方法解决的主要是　分类的学习模型实际上是输入以及参数的连续函数。　
 这种场景下，我们可以得到(x, f(x))的很多预测值, f就是被偷的model。　
+这些(f,f(x))实际上就成了连续函数上面的点，因此我们就可以用这些点来直接计算。　
 
