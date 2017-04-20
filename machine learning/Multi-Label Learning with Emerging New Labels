@@ -1,0 +1,15 @@
+Authors: Yue Zhu, Kai-Ming Ting and Zhihua Zhou from Nanjing U. 
+Published in ICDM'16
+Date: Apr 20, 2017
+
+看这篇文章，主要考虑其对我们的training data压缩的意义。　
+
+首先，我们是考虑将training data的压缩用到machine learning training provenance这个问题上。　
+具体来说，模型有可能是在不断refine的，那么我们有需求将训练出模型的training data保存下来从而实现provenance。　
+设想一种类似的场景好比： 我们的模型是随着时间不断优化的，因而需要定期保存一些provenance的trace。 
+
+这篇文章就给了一个模型随着时间不断进行refine的例子。
+
+文章提到multi-label learning大概就是说一个data item可能对应多个label，而随着时间可能会出现一些之前没有见过的label，那么如何处理这种情况就显得
+有意义了。 
+

@@ -1,0 +1,26 @@
+在active learning中，特别是分类问题，标记数据可能是非常昂贵的。　
+
+因此，选择什么样的数据去标记成为一个值得研究的问题。这和StealML中的ask the oracle是很类似的。　
+
+一般来讲，选择数据去标记，基本思想就是选择目前模型最拿不准的那些在boundary的数据去标记。　
+
+因此就有用:
+1. 第一确信和第二确信分类之间的差，但是丢失了很多信息没有使用
+2. 置信度向量的entropy，用熵可以解决1中的问题
+3. 找到潜在的可能带来更大梯度变化的example
+4. 找到潜在的可能带来更大error reduction的example
+
+参考文献: Burr Settles, University of Wisconsin-Madison, 2010
+
+这个文献中也提到了active learning一个很重要的问题，那就是很多时候，我们去query的example的选取实际上是非常biased。
+
+如果我们把这个和training data的压缩联系起来，区别在与在training data compression的时候，所有example的label实际上是知道的。　
+
+那么目的从原来的减少labeling budget到现在的降低storage pressure.
+
+一个简单的idea就是，我们可不可以度量每个数据对模型weight的影响有多大，然后把那些影响比较小的去掉？
+但是对于minibatch这种，是不是就比较困难了？
+（不过貌似也可以在minibatch中间去monitor weight的变化然后决定是否保留特定的example.）
+
+进一步地，问题就变成了，如果在mini batch中间进行monitor,那么把一部分example去掉之后，下次重新训练的时候，就不一定能够高度还原出模型了。
+因为mini batch的分法可能不一样了。　
