@@ -1,0 +1,21 @@
+Authors: Partick Lee etc. from CUHK
+Published in DSN'17
+Date: June 5, 2017
+
+这篇文章算是在deduplication里面比较新的topic了。
+
+文章出发点是说类似于MLE encryption这种加密，因为每个data chunk被加密成什么实际上是由其内容决定的，也就是所谓的content-derived key。但是这就导致
+了明文和密文之间确定的一一对应关系。 
+
+如果我们能够得到一小部分明文密文对应关系（这是文章对于攻击的假设），我们就可以利用局部性原理等猜出很多其他的对应关系，从而猜出原文是什么。 
+
+那么要对抗这种攻击，根本上来讲就是要杜绝MLE encryption导致的这种一一映射关系。 
+
+本文提出采用min-hash encryption来解决。 
+
+具体而言，min-hash encryption的步骤是：首先将一个明文序列M作为输入，然后将M拆分成为多个segments，每个segment可能包含多个chunk。然后对每个segment,
+计算出其包含的chunk当中最小的fingerprint作为minHash。　然后我们通过这个minHash来生成一个加密秘钥K并用这个K来加密这个segment当中的每一个chunk。
+这么做依然可以保证较好的去重效率，原因是相似的segment更可能被同一个秘钥进行加密。但同时，这个方法也可以防止frequency analysis的攻击，因为这种一一
+对应的关系被打破了。　
+
+这篇文章是DSN几年的best paper之一，这样看起来的确是很有意思。　
