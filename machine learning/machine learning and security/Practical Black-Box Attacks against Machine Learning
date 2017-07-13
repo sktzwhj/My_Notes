@@ -1,0 +1,10 @@
+Authors: Nicolas Papernot, Patrick McDaniel, Ian Goodfellow et al. from Pannsylvania State U. 
+Published in ACIACCS'17
+Date: June 6, 2017
+
+这篇文章提出了一个黑盒攻击一个远程机器学习网络（分类器）的方法，不过与其说是攻击，更贴切讲应该是欺骗。　
+
+基本思想包括两部分：　1. 类似于StealML那篇文章的方法，首先在本地训练一个和远程模型很接近的模型；　2. 利用这个相似的模型生成一个反例来欺骗远程的网络
+模型。　
+
+这里的black-box是说攻击者可能只有极其有限的知识（远程模型对于特定数据的分类label）。　
