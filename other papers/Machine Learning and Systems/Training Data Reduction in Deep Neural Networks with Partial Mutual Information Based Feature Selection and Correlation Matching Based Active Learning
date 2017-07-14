@@ -1,0 +1,11 @@
+Authors: Jian Zheng et al. from State University of New York at Binghamton
+Published in ICASSP'17
+Date: July 14, 2017
+
+Initially, I think this paper is somewhat doing the exact thing I want. However, it turns out it's different. 
+
+The idea of this paper is to find the primary features for the input data and then remove the training example which is highly correlated to some existing training
+data. 
+
+However, that's might be the reason why they choose DNN rather than CNN as the model. Because the primary reason in CNN is hard to find out by methods like partial 
+mutual information, etc. 
