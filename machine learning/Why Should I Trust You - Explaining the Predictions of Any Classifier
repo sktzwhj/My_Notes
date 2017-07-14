@@ -1,0 +1,8 @@
+Title: "Why Should I Trust You?" Explaining the Predictions of Any Classifier
+Authors: Marco Tulio Ribeiro et al. from University of Washington. 
+Published in KDD'16
+Date: July 14th, 2017
+
+Finally, it seems I understand what this paper is doing...
+
+They use a simple model to imitate the model boundary locally...because the global model is too hard to describe. 
