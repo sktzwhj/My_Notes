@@ -1,0 +1,3 @@
+# My_Notes
+This repo is my daily notes for reading papers, learning some techniques, etc. 
+I may try to make it a blog later...
