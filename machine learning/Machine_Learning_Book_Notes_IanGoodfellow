@@ -1,0 +1,20 @@
+Date: Sep 25, 2017
+
+Chapter 5. Machine Learning Basics
+
+The capacity of machine learning models is the functions it can describe.
+The capacity of a model can be adjusted by the hyperparameters of the model. This is a good explanation about what is parameter tuning doing.
+It is good to know the motivation of deep learning is mainly due to 'dimension explosion'
+The validation set is used to tune the hyper parameters so that the model can generalize better.
+Regularization is any modiﬁcation we make to a learning algorithm that is intended to reduce its generalization error but not its training error
+
+Chapter6. Deep Feedforward Networks.
+We must use some non-linear neuro units to let the neural networks to be able to express some non-linear functions. e.g., XOR
+convex-optimization - every local optimal is global optimal
+non-convex - NP hard.
+https://www.zhihu.com/question/41252833
+there is a good explanation about what is cross-entropy (the similarity between the real distribution and the estimated distribution.)
+another benefit of using cross-entropy is that the learning rate can be controlled by the error.
+
+If the output unit (or the hidden layer) saturates, then the initial weights might be quite large so that the gradient may be very small.
+In this case, the network barely learns. In other words, the learning rate is quite slow. 
