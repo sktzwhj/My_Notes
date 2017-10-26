@@ -1,0 +1,16 @@
+Authors:Kexin Pei et al. from Columbia University
+Published in SOSP'17
+
+For people who have knowledge about the traditional software testing, it is good to understand
+this paper by comparisons.
+
+This paper is the whitebox testing for deep learning systems. Similar to software testing, the main
+target of the paper is to find the corner errors of deep learning models.
+
+Similar to traditional software testing, the code coverage is a problem. If we only generate
+some synthetic data, we may only cover a very small portion of the situations. Based on this,
+this paper propose a concept called neuron coverage.
+
+Code coverage does not apply for DL systems. This is because the logic of DL systems is not only
+shown by the code. But parameters.
+
