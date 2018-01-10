@@ -8,4 +8,5 @@
 为什么对于non-stack的缓存算法不能用基于sampling的方法来处理呢？
 我认为主要是因为每个data block之间的关系并非独立的。
 
-感觉上这篇文章的方法也不是作者首先提出来的，所以作为一个以实验为主的文章能够拿到best paper也是让人很
+miniature simulation其实就是一种通过采样来模拟缓存行为的方式。描述缓存的性能，一个重要的方式就是miss ratio curves。具体来说，这个曲线描述了缓存大小和miss ratio之间的关系。
+
