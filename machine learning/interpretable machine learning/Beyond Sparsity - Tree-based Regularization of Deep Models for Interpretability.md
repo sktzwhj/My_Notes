@@ -8,4 +8,4 @@ The differetiable boundary tree learns a concise representation by using boundar
 
 The motivation to choose recurrent neural network is still not clear for me...What will happen if using this in simple classification problem?
 
-However, for image data, this method may not be applicable because non-structural data may result in huge decision no matter how you do the optimiza
+However, for image data, this method may not be applicable because non-structural data may result in huge decision no matter how you do the optimization.
