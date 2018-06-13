@@ -1,0 +1,26 @@
+Author: Jurgen Kaiser, etc. 
+Published in MSST 2016
+Date: 07/06/2016
+
+Useful references: 
+Look-ups in the chunk index have been the main performance bottleneck in deduplication systems as the complete index is typically 
+too large to be held in main memory. 
+
+In order to fit the fingerprints in the memory, existing efforts are (1) reduce the detection rate of dedup. (2) exploit 
+chunk locality. (to make full use of the benefits of cache)
+
+However, the concern of this paper is that there might be a lot of parallel backup streams. To this end, the cache would be 
+polluted again and again. 
+
+So the contributions of this paper is that the authors build a system which could handle many streams and avoid the memory 
+problem. 
+
+In general, the idea of this paper is to sort the streams to avoid random access thus making better use of the cache. 
+
+Another interesting thing mentioned in this paper is about dedup in distributed enviroment. The client firstly send the 
+fingerprints to the servers. The servers check the existence of these fingerprints and give some feedback. To this end, 
+only the data which is not duplicated needs to be transfered so that the traffic is saved. 
+
+11月14日重新读了这篇paper，这里记录一些新的理解。　
+
+LSM-tree结构是在服务器一侧维护的，　

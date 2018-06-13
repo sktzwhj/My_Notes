@@ -1,0 +1,40 @@
+Author: Fei Xie et al. from NetApp
+Published in ATC'13
+Date: 17/06/2016
+
+Actually, in primary storage systems, the duplicates are not an obvious thing. The benefits we can get from dedup rely 
+on different workloads. So it becomes significant to estimate the duplicates in a workload. However, considering the
+computation overhead, we must find a way to use some samples to accurately estimate the duplications in the storage. 
+
+This paper claims that their method is a content-aware method because the blocks with the same fingerprints are either
+both included or excluded from the samples. 
+
+The estimation of duplicates can also be indicate as the estimation of the unique blocks. 
+
+Since the distribution of the workloads is complicated, the sampling method often introduce inaccuracy. Worse, if we want
+to get more accuracy, we need to nearly scan the whole data set.
+
+So let's see given a dataset consisting of a group of data blocks (of fixed size or variable size) with possible duplicates. 
+how to predict the space that can be saved by dedup. We define, 
+
+R = Size in bytes of distinct blocks in the dataset / Size in bytes of the data set
+
+fingerprint Mod M = X 
+
+tht total size of the distinct blocks in the sample is used to estimate the total size of the distinct blocks in the 
+entire data set
+
+由于这里作者采样的是那些模M为X的值，这里定义S*为估计的总的distinct block的size 
+
+S* = M*sigma(ni*si) i is [1,K]
+
+因此，预估的去重率应当是 S*/S_dataset
+
+那么，这个工作的关键是最后估计的错误率和filter之间存在什么样的关系呢？
+
+err = (S - S*)/S
+
+作者数学证明了用较小样本集合就可以得到精确结果的可行性．
+
+对于我们的启示是，对于inline的dedup来说，有多大的收效实际上是和workload紧密相关的．因而也更加证明了application level的信息对于inline 
+primary storage当中的dedup的重要性．

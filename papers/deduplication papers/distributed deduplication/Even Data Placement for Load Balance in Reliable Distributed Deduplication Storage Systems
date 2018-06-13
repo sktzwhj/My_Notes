@@ -1,0 +1,18 @@
+Author: Min Xu, Yunfeng Zhu, Patrick Lee, etc. from CUHK
+Published in IWQoS'15
+
+deduplication可能导致load imbalance，因为重复的数据都要refer to到它们之前的位置，这种refer是unpredictable的。 
+
+传统的data replacement是没有考虑deduplication的。 
+
+但是考虑了deduplication之后，可能出现的情况，比如：数据被分到少数几个节点上，这样就导致read performance下降。 
+
+而且在异构环境中，如果数据被分到了带宽受限的节点上，这种不平衡会加剧。 
+
+除了deduplication之外，这篇文章还考虑了erasure coding，主要是为了找到一种同时满足efficiency和reliability的存储系统
+的setting。 作者claim传统的placement方法无法同时权衡好read balance与存储balance的问题。 
+
+背景：关于erasure coding
+就是n>k，将数据拆分成k个等大小的chunks，并且将这k个编码得到n-k个对称的chunk，通过任意k个，我们都可以恢复原来的数据。 
+
+因为这样的优化问题本身时间复杂度是指数的，因此本文提出了一种线性时间的贪心算法。只有有提升就是好的吧！

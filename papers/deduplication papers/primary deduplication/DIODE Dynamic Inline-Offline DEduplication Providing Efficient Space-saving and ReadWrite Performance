@@ -1,0 +1,7 @@
+Authors: Yan Tang et al. from ZJU
+Published in MASCOTS'16
+Date: Dec. 17th, 2016
+
+这篇文章提出了一个两阶段的deduplication策略。 
+
+第一阶段，根据文件的扩展名把文件分为适合dedupe的和不太适合dedupe的。 然后适合dedupe的通过inline去做，而不适合dedupe的去offline做。 

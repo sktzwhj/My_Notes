@@ -1,0 +1,43 @@
+Author: Davide Frey et al. form INRIA 
+Published in SOCC'12
+Date:10/06/2016
+
+The resource demand (memory and computation) in stateful routing makes it unsuitable for large scale storage systems. So the contribution
+of this paper is to sacrifice little accuracy to reduce the overhead of stateful routing. 
+
+The specific contributions:
+(1) lightweight probabilistic node-assignment mechanism and new bucket-based load-balancing strategy. 
+(2) efficiently spreads the load equally among the nodes. 
+
+(1) maximizing dedup ratio and (2) balancing the storage servers are the main concerns. In order to solve these problems, the main 
+methods are (1) stateless routing, this might lose some potential opportunities for dedup (2) stateful routing. but the resource demand
+for stateful methods is too high that it is hard to take it into practice. 
+
+The architecture of Produck
+
+coordinator in Produck is just a metadata server. and, it's a single-node metadata server. 
+
+Chunking
+
+Chunk assignment 
+
+The chunk assignment in Produck uses PCSA multi-set cardinality estimation method. This method is used to calculate the 
+
+The observation of this paper is that, in order to get a higher dedup ratio, we do not need to know which data is stored on which 
+servers. We just need to know how much is the overlap.
+
+PCSA algorithm could calculate number of distinct items it contains. 
+
+In addition, when choosing the best storage node, the coordinator does not only choose the one with highest cardinality estimiation. 
+The coordinator takes the locality into consideration. 
+
+Load balancing. 
+
+For load balancing, that is, we should take the load of servers into consideration. 
+
+In this paper, in order to reduce the pressure of the only coordinator, only the file-level information is managed by it, 
+the superchunk level information is maintained by a randomly chosen server. 
+
+This paper gives us some hint about the difference between simulation and real implementation. Maybe only the network 
+message communication is transformed into process communication. 
+

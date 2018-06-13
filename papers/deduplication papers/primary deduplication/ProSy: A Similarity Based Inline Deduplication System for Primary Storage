@@ -1,0 +1,18 @@
+Authors: Xin Du et al. from HUST
+Published in NAS'15
+Date: 19/07/2016
+
+个人感觉这篇文章的写作非常tricky. 虽然也是来自于华科冯丹老师的大组,不过文章写得逻辑不是很清晰.
+
+而且显然作者的literature review并没有做扎实,有一些很重要的参考文献遗漏.
+
+不过不管怎么样,文章的思路是这样的:
+
+利用broder理论,通过CRC作为hash,然后找到最小(最大)的几个,用这几个的CRC来标定category.
+
+其实这篇文章的主要出发点是说在primary dedupe当中,用hash是很危险的,因为用hash可能会去错重....所以本文的考虑是先用broder
+理论将需要比较的空间减到很少,然后再byte-to-byte的比较,这样效率就很高了.(really?)需要实验下看看这个开销到底有多大.
+
+然后和iDedup一样,本文也只处理那些长的sequence,粒度比较粗.所以说dedupe的效率一般.
+
+就实验来看,本文采用的数据集是自己采集的.  the user homes from 23 students from different majors in HUST.

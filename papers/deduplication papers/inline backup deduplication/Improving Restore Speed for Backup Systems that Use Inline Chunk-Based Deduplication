@@ -1,0 +1,48 @@
+Author: Mark Lillibridge et al. from HP Labs
+Published in FAST'13
+Date:11/06/2016
+
+The problem definition:
+Slow restoration is a big problem for inline chunk-based data dedup systems due to chunk fragmentation. 
+
+chunk fragmentation cannot be easily solved by just re-arranging the layout of the the chunks. Because the chunks are shared
+by many backups. So it is not possible for us to find a proper layout. Maybe according to some heuristic, for example, we 
+can arrange the layout to fit with the latest backup. However, the overhead is still vary significant. 
+
+As the time goes by, the fragmentation in dedup storage systems can be gradually worsen. 
+
+A baseline of restore algorithm. 
+
+The recipe is one or more files containing a lis tof references to the backup's chunks in the order they make up the backup.
+That means pairs like (fingerprint, container id) are stored in the list. Then the offsets of each chunk is stored at the head
+of the container. Since seeking the chunk container seems not to be wise, we just read the whole container. 
+
+The approach used in this paper:
+(1) Measuring the restore speed. 
+fragmentation measure: 1/mean containers read per MB of data restored. (so we can see that this measure is just based on the 
+assumption of the baseline restore algorithm)
+
+(2) container capping
+a way to limit the fragmentation is to limit how many containers need to be read at restore time for each section of the 
+backup. So we should limit the use of old containers. To this end, we have to give up some deduplication. 
+
+That is, capping is a technique to trade off deduplication for faster restore speed. 
+
+Then introduce the capping method by my words, when we write a chunk, if the chunk is in a very old container. we just let
+the old data be there, and write that data into a new container. But note that this is a backup system, so the capping 
+procedure can be done at segement level. We organize the chunks in a segement to be process each time. For instance, 
+we read a segment's worth of chunks to an IO buffer. Second, we determine which of these chunks are already stored and in 
+which containers. Third, we choose up to T old containers which contains the most chunks of current segment. Finally, 
+for the containers which contain a lot of chunks for current segement, we keep them. But for others, we just let them to be 
+new chunks and add the addresses into the new open container. 
+
+So you can see, we sacrifice some deduplication ratio. 
+
+(3) Forward assembly area
+restore problem for dedup backup streams differs in two important ways. (1) my definition: read amplification. (2) at the 
+time of starting restore we have perfect knowledge of the exact sequence of chunks that will be used thanks to the backup 
+recipe. 
+
+Actually, not very clear about what is actually being done by forward assembly area. 
+
+Seems that it is a paging replacement algorithm. 

@@ -1,0 +1,15 @@
+Author: Benjamin Zhu, et al. from Data Domian, Inc. and Princeton U. 
+Published in FAST'13
+Date: 05/07/2016
+
+一些有意思的idea，虽然在今天的系统当中已经被广泛使用了。
+
+把fingerprint和data chunks按照相同顺序存，这样可以让空间上有局部性。
+
+对于backup的workload来说，时间局部性是很弱的。（那么对于primary storage，这应当是可以利用的地方，当然在FAST12中已经得到了印证）
+
+除了基本的dedup结构外，本文用来做加速的techniques包括：
+
+bloom filter: 
+stream-informed segment layout:就是把fingerprint和data chunks按照相同顺序存储。
+locality preserved caching: 

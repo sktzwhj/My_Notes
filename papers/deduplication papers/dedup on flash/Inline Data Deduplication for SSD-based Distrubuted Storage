@@ -1,0 +1,44 @@
+Author: Bingqi Zhang et al. from USyd
+Published in ICPADS'15
+Date:09/06/2016
+
+This paper focuses on the dedup on distributed storage systems. (HDFS in the implementation)
+
+The namenode is used to store the fingerprints in the main memory. The similarity is used to decide which node should a 
+new write be assigned to. A basic idea is that, once there are much more similarity, we could gain more dedup ratio on that
+node. To this end, the write would be assigned to that node. 
+
+The hierarchical data organization in this paper can be summarized as: 
+
+chunk -> blocks 
+
+chunk is the unit to fragment a file while block is the unit to calculate fingerprint. 
+
+Two algorithms have been proposed: 
+(1) MMHR (Multiple MinHash Hashing Routing)
+a. extract M minimal hash values from all blocks of a chunk. The M hash values are used for routing decisions. 
+b. we check if the M hash values match the any M values from already assigned chunk records. 
+c. we assign this write to the node with most matches. 
+d. if no match, just record the new hash values to the name node and assign the write by a default mechanism. 
+
+MMHR adds little modification to the file system. The only difference is that original HDFS assign writes randomly. 
+Here a stateful method is used. 
+
+So in MMHR, the routing is in chunk-level. 
+
+One problem for MMHR is that since sampling is used, it is possible that other nodes also have some data which is similar
+to the current chunk. But since we only decide the assignment by the sampled fingerprints, these similarity is not considered. 
+In my understanding, this is related to the ratio of M/chunk_size. Similar to what the authors say, related to the chunk
+size. 
+
+(2) in order to solve the problem mentioned before, a new algorithm 
+a. we first process all blocks in all chunks
+b. use a simple hash to see if the if the block should be mapped to a node which already has some blocks
+c. if so, assign this block to the existing node
+d. else, use MinHash to assign
+
+Some limitations of this paper, 
+
+Evaluation of this paper, 
+
+metrics, (1) dedup ratio (2) memory usage (3) routing overhead

@@ -1,0 +1,20 @@
+Author: Vasily Tarasov et al. from Stony Brook U and IBM Research
+Published in Ottawa Linux Symposium'14
+Date: 04/07/2016
+
+Deduplication can be achieved at any level, application, file system level, block device level. Deduplication can be optimized 
+for applications by using application level information. However, it is impossible to optimize for all applications...
+
+(what can I do...)
+
+这篇文章和16年FAST的using hints to ... block deduplication ...是一个组的。他们在写这篇文章的时候就已经想好了要用application level或者file 
+system level的信息。
+
+
+不过没有看出这篇文章有什么特别的地方，从发表的会议来看，这篇文章出彩的地方应该也是工程实现。
+
+
+几点思考：
+(1) 在APR中还是应该强调user-centered dedup这个思想
+(2) 关于SSD那个工作，和primary搭起来，并且强调primary storage deduplication对于SSD的重要性
+(3) CVPR'13中有一个工作讲怎么不通过text description来找到duplicate的照片。

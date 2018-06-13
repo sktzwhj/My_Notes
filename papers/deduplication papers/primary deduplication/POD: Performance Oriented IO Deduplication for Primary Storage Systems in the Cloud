@@ -1,0 +1,39 @@
+Author: Bo Mao et al. from Xiamen U
+Published in IPDPS'14
+Date: 01/07/2016
+
+This paper is for deduplication in primary storage systems. The focus of this paper is that small 
+data I/O is the performance bottleneck for cloud storage. System like iDedup focuses on the capcity.
+However, this paper looks more on performance. 
+
+Using deduplication of backup storage systems to primary storage systems directly would cause two 
+problems: (1) overhead of memory indexing. (2) fragmentation
+
+Actually, there are two kinds of cache in the context of deduplication. 
+(1) index cache which is used to accelerate the performance of writing because most fingerprint 
+comparisons can be finished in memory. However, the read memory is used to accelerate the performance
+of reading the content of data. Therefore, since the total number of memory is limited, these two
+become a contradictory. 
+
+The solutions of this paper:
+
+(1) Select Dedupe
+The module classifies the redundant write into three types
+a) fully redundant write requests whose write data are already sequentially stored on disks. 
+b) partially redundant write whose write data are a mixture of redundunt and unique data. 
+c) the partially redundant write of which the number of redundant data chunks per request exceeds 
+the threshold. 
+
+a) and c) are deduped. the main purpose is to maintain a relatively high performance for read. 
+Because if we do dedup on b), the data would be stored dispreadly, so the fragmentation would 
+significantly influence the read performance. (note that sequ)
+
+(2) iCache
+We can regard this as a cache manager. This is very similar to what we want to do. The basic idea
+is to calculate the cost-beneift value of two cache( index (fingerprint) or read cache ). Therefore, 
+the  more hits a cache can get, the larger size the cache should be. 
+
+Dec 16重新读POD又有了一些新的理解。 
+首先，这篇文章通过FIU的trace发现，duplicate I/O on the same address在重复的写操作中占据的比例非常高。 实际上，deduplicate这些
+实际上可以提高IO性能而且不会导致fragmentation。 而且这样的写操作又往往是小的写操作，在iDedup这样的系统中是没有被充分考虑的。 
+

@@ -1,0 +1,26 @@
+Authors: Ricardo Santana et al. from FIU and IBM
+Published in HotStorage'15
+Date: March 21, 2017
+
+这篇文章和应该是FAST'16上那些host-side cache的前驱。　
+
+有一个很有意思的分类是他们把cache分为两类：
+1. datapath cache， 指的是那些一旦发生miss就需要进行cache update从而使得上层的应用或者硬件可以读取到数据的
+2. non-datapath cache, 指的是不需要在每次miss都进行cache update的那些。 
+
+'Since the item being evicted may be more valuable than the item being inserted in its place, cache updates can be 
+detrimental to the cache hit rate.'
+
+An alternative solution: Lazy adaptive replacement cache
+Limitation: The cache filter is always operational. may also prevent important items to get in. 
+
+This paper proposes mARC. 
+The basic idea of mARC is to avoid unnecessary cache updates. 
+
+It defines three states of workload at a given time: Stable, Unstable and unique access. 
+and selectively disable cache update depending on the state. 
+
+Actually there is a very good sentence for us to use: 
+'Accurately tracking the active/unique page sets and their relative imporantence is expensive. '
+
+因此，本文采用了一个比较轻的度量，也就是cache hit rate。 

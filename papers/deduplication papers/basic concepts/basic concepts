@@ -1,0 +1,5 @@
+对于backup storage来讲，restore要比read频繁很多．
+
+如何理解restore呢？其实就是和backup相对的，把数据备份起来以后，需要进行完全的恢复时就需要restore. 
+
+不过对于primary　storage来讲，read是要比restore更加重要的．

@@ -1,0 +1,22 @@
+Author: Michael Burrows
+Published on ASPLOS 1992
+Date: 06/06/2016
+
+Larger blocks make better compression. 
+
+Compress directly on the blocks would lead to some problems. e.g., (1) when files are overwritten ; (2) the file blocks are relatively small 
+
+These problems might be solved in LFS...
+
+(conception: what is log-structured file system)
+
+The basic idea of LFS is to use buffers and write in a log structured manner. And the difficulty for LFS is to find the inodes. Since the inodes are 
+written to the disk everywhere, it is even harder to find the newest version of a inode. The solution for this is the inode map.when appending a data
+block to a file, LFS actually writes the new data block, its inode, and a piece of the inode map all together onto the disk. But it seems that the imap 
+pieces are still spread on the disk. In order to solve this, checkpoint region is introduced. The checkpoint region contains pointers to (i.e., ad-
+dresses of) the latest pieces of the inode map, and thus the inode map pieces can be found by reading the CR first. Note the checkpoint region is only updated periodically (say every 30 seconds or so), and thus
+performance is not ill-affected. 
+
+Another important issue to solve is recursive update problem. LFS uses indirection to solve this problem. 
+
+Garbage Collection
