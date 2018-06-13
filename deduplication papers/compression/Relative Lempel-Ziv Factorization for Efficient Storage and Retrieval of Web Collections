@@ -1,6 +1,0 @@
-Authors: Christopher Hoobin, Simon J. Puglisi and Justin Zobel from RMIT, King's College London and UMelbourne
-Published in PVLDB Aug, 2012
-Date: March 20th, 2017
-
-这篇文章相当于是RLZ的提出。主要是说原来基于URL排序之类的web data压缩算法并不具有普适性，因此本文提出一种新的方法。　
-

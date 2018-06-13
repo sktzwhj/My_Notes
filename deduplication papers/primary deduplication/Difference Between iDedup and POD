@@ -1,7 +1,0 @@
-我们来总结一下现有的两篇主要的primary storage的deduplication的工作。
-
-iDedup呢主要是利用了时间和空间的局部性，
-
-HANDS
-
-POD认为iDedup这种只去处理大文件的方式是不可取的，因为其实小文件读写才是primary storage当中更加常见的workload的形式。因此，

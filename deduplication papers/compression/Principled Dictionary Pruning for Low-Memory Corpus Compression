@@ -1,8 +1,0 @@
-Authors: Jiancong Tong from Nankai U, Authony Wirth, Justin Zobel from UMelbourne
-Published in ACM SIGIR'14
-Date: Dec 26th, 2016
-
-这篇文章是那篇Effective Construction of RLZ Dictionary的基础和重要的比较对象，其实算是一个组做的。　
-
-本文就是说我们怎么样从RLZ的静态字典中去掉一些segement还可以不显著影响压缩率。一个很傻很自然的办法就是把每一个segement去掉，然后看整个文件的压缩比
-受到什么样的影响，然而这样做的开销显然是无法估量。　

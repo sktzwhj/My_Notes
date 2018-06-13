@@ -1,7 +1,0 @@
-Title: Efficient Batched Sychronization in Dropbox-like Cloud Storage Services
-Authors: Zhenhua Li, Christo Wilson et al. from Tsinghua, Peking U, UCSB etc. 
-Published in Middleware'13
-
-这篇文章指出一个云存储中的问题，就是频繁同步导致大量的元数据开销会占用很多网络带宽。这和LSM-tree中处理大量小数据的思想是一致的。也就是，batch。 
-
-我们要是能够熟练地将一个领域中用到的思想转化到其它领域，想必是很好的。 

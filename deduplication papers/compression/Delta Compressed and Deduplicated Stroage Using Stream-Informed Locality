@@ -1,8 +1,0 @@
-Author: Philip Shilane, et al. from EMC Corp. 
-Published in HotStorage'12
-Date:14/06/2016
-
-Although traditional compression and dedup are widely used, further compression is attainable. Delta-compression is a good choice, 
-however, a challenge is a large number of index is necessary. To solve this problem, in this paper, stream-infomred locality is used
-in delta-compression. 
-

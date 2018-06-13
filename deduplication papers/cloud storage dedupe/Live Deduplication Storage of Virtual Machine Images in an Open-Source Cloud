@@ -1,8 +1,0 @@
-Title: Live Deduplication Storage of Virtual Machine Images in an Open-Source Cloud
-Authors: Chun-Ho Ng, Mingcao Ma et al. from CUHK
-Published in Middleware'11
-Date: Dec 8th, 2016
-
-本文提出一个LiveDFS来对私有云当中的VM image进行dedupe从而提高存储效率。　
-
-无论这篇文章提出什么样的dedupe策略，都无法避免由于dedupe的分块机制导致的fragmentation。　

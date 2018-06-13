@@ -1,7 +1,0 @@
-Author: Mark Lillibridge, et al. from HP Labs, UCSC, HP Storage Works Division
-Published in FAST'09
-Date:16/06/2016
-
-Although inline, but inline for backup storage. 
-
-sparse-indexing can be regarded as sampling. but it is on single-node dedup system. when it is used 

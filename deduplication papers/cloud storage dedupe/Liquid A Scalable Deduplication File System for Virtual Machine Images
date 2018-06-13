@@ -1,9 +1,0 @@
-Title: Liquid: A Scalable Deduplication File System for Virtual Machine Images
-Authors: Xun Zhao et al. from Tsinghua U. 
-Published in TPDS in 2014
-Date: Dec. 8th, 2016
-
-这篇文章给我们一些很好的素材。 
-
-比如说， VM images绝大多数都是从template建立起来的。 由于这种共享的特性，VM Image需要被多个host同时访问。 这也就是说，我们的
-工作可以做在分布式存储的层面上。 

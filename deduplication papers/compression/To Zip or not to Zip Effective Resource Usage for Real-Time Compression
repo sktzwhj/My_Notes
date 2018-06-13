@@ -1,8 +1,0 @@
-Authors: Danny Harnik, Ronen Kat, Oded Margalit, Dmitry Sotnikov and Avishay Traeger from IBM Research-Haifa
-Published in FAST'13
-Date: Nov 16th, 2016
-
-数据压缩的重要性自然不言而喻，但是如果数据本身可压缩性不高，那么去压缩它浪费了很多计算资源和时间，然后还没有什么benefit。一个值得注意的事实是，可压缩性
-不好的数据，消耗的压缩时间更多。(up to 8X)。因而快速地预测数据的可压缩性就很重要。
-
-这种预测必须是高效且准确的，首先，如果效率低到和压缩差不多，那么就没必要这么做了。其次，预测不准确当然也是白白浪费资源。　
