@@ -1,0 +1,11 @@
+Have read about how FIU collects their traces for the dedupe paper in FAST'11. It seems they use a customed blktrace to do
+so. Moreover, blktrace gets the data from debugfs which is temporary file system built in linux operating systems. 
+
+Debugfs can put some kernel data to user space so that we can access it. 
+
+Blktrace get data from debugfs to do the tracing. So if we want to get the hash of content of block data, we need to let 
+debugfs to output them. 
+
+After discussed with Dr Li, we have an alternative solution to do this. We could use Network Block Device to do this. What 
+we need to do is to extract the read and write requests in nbd-server side. To be specific, if there is some code which is 
+used for parsing the packets, we can get the traces there.  

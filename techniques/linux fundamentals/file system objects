@@ -1,0 +1,33 @@
+char devices : keyboard, mouse, terminal
+
+block devices: disk 
+
+database is not necessarily built on the file system, it can manipulate the raw disk. 
+
+linux pipe is a way to achieve the communication between processes. 
+
+socket: processes among different hosts can communicate with sockets. 
+
+symbolic links: 
+
+special files: 
+
+actually, the stdio library we often use is just an API layer in C. If you want more control, you need to use the system 
+call of linux. 
+
+An interesting thing, error is not always return by the function. In Unix C, some times, the error code is an external 
+variable. In that case, the application needs to check that code to find out what happens. 
+
+In UNIX OSs, there are some system calls on manipulating files and dirs. For instance, 
+fstat and stat 
+access(const char *path, int mode) could support test the access of a file with certain modes. 
+lstat can get the information of a symbolic link rather the file it points to. 
+
+chmod chdir ... all these functions are avaiable.
+
+telldir & seekdir can record and restore the position of the directory stream. 
+
+we can define our customed compare function for comparing the dirs 
+
+
+

@@ -1,0 +1,42 @@
+when we are designing a server program, each user of the server must receive immediate response. If there were many users
+it becomes impossible if your server is waiting for input from another user. Consequently, we need perform IO for multuple 
+clients. 
+
+Non-Blocking IO (ref : http://www.cnblogs.com/whyandinside/archive/2012/03/04/2379234.html)
+
+non-blocking means that the operation can return before the operation is actually finished. 
+
+but non-blocking I/O is somewhat a round-robin method. To this end, it is not efficient. So a good solution can be let your 
+process be awakened for I/O. This is accomplished by the system call select(2) and poll(2).
+
+To use select(2), we should firstly have a fd set. 
+
+read event, write event, exception event
+
+so what is the select mechanism? (ref http://blog.csdn.net/orz415678659/article/details/8958415)
+
+All of the three mechanisms(select, poll, epoll ) are sync I/O. 
+
+but they are sync non-blocking I/O. that means during the waiting period, the cpu can be used for something else. 
+
+到底应该如何理解Linux中的I/O编程模式呢？
+
+I/O中涉及的对象包括调用这个I/O的process(or thread)以及kernel
+当一个read操作发生时，涉及两个阶段 (1) 等待数据准备 （2）将数据从内核中拷贝到用户进程中
+
+对于blocking I/O来说，在准备阶段，kernel可能要等待数据从网络或者从磁盘传过来，这个时候用户进程会被阻塞．然后等数据就绪后，kernel把数据从内核空间
+拷贝到用户空间后，用户才能够解除block．也就是说在(1) 和(2) 两个阶段，用户进程都被挂起．
+
+对于non-blocking　I/O来讲，在第一个阶段没有完成时用户进程并不会被挂起，而是立马收到一个error，注意，这样一个read就已经完成了．那么接下来，由于用户
+进程知道自己并没有得到数据，因而会继续发read操作，直到数据准备好了，用户就可以读到数据了．
+
+多路复用是select或者epoll这种东西，好处在于单个process可以同时处理多个网络连接的I/O，而每一个网络连接或者磁盘其实一般是non-blocking的.在这里，整个
+用户进程其实依然是被block的，只是是被select而不是socket I/O block．
+
+异步I/O，用户进程发起read之后，立刻就可以去做其它的事情．从kernel的角度，收到一个异步请求后，会立马返回．所以不会对用户进程产生任何block．kernel
+准备好数据后，会给用户一个signal，告诉它read操作完成了．
+
+所以对于non-blocking来说，如果数据当前还不可用，如果不再去询问，那么这个数据就再也得不到了，因为之前的non-blocking　I/O实际上已经以一个错误的形式
+返回了．
+
+
