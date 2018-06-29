@@ -12,4 +12,10 @@ as indicated by the above relationships. the bias is the model's ability on fitt
 
 for bias, if we use a complex model, it is likely to fit the training data better. so the bias can be smaller. however, if we want the model to generalize well, it should not be too complex so that would not be influenced much by the individual train points. This indicates the low variance. 
 
-In traditional ML models, the bias and variance are contradicted. However, in deep learning, you can optimize both of them at the same time. Specifically, you can add the number of hidden layers and the number of neurons, or train the model with longer time. To reduce the variance, we can use different regularization methods
+In traditional ML models, the bias and variance are contradicted. However, in deep learning, you can optimize both of them at the same time. Specifically, you can add the number of hidden layers and the number of neurons, or train the model with longer time. To reduce the variance, we can use different regularization methods. 
+
+We can connect some other concepts to bias and variance. 
+For example, <b>overfitting</b> normally means low bias but high variance. Corrspondingly, <b>underfitting</b> genrally means high bias and low variance. 
+
+You can compute the bias and variance in the following way 
+https://buzzrobot.com/bias-and-variance-11d8e1fee627
