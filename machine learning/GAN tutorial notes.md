@@ -94,7 +94,7 @@ GAN + AutoEncoder
 image -> encoder -> code -> generator(pre-trained) -> image
 minimize the distance between input image and output image. 
 
-conditional gan, the discriminator needs to check both the input and output of the generator. that is, it not only check if the image is real but also whether it matches the input description. 
+conditional gan, the discriminator needs to check both the input and output of the generator. that is, it not only check if the image is real but also whether it matches the input description.` 
 
 
 
