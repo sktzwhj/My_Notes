@@ -126,4 +126,54 @@ enable interrupts;
 
 the value we are talking about here is just the mutex in the programming language. 
 
- 
+##L05 Semaphores, Conditional Variables
+the method mentioned in last lecture cannot be used in multi-processor machines due to the shared cache, etc. 
+
+the basic waiting-busy lock can be implemented by test-and-set atomic operations. 
+
+busy-waiting lock may cause the problem of priority inversion which can be normally solved by priority inheritence. 
+
+More specifically, 
+Consider two tasks H and L, of high and low priority respectively, either of which can acquire exclusive use of a shared resource R. If H attempts to acquire R after L has acquired it, then H becomes blocked until L relinquishes the resource. Sharing an exclusive-use resource (R in this case) in a well-designed system typically involves L relinquishing R promptly so that H (a higher priority task) does not stay blocked for excessive periods of time. Despite good design, however, it is possible that a third task M of medium priority (p(L) < p(M) < p(H), where p(x) represents the priority for task (x)) becomes runnable during L's use of R. At this point, M being higher in priority than L, preempts L, causing L to not be able to relinquish R promptly, in turn causing H—the highest priority process—to be unable to run. This is called priority inversion where a higher priority task is preempted by a lower priority one.
+
+By using priority inheritance, we can guarantee that the thread L can relinquish R promptly so that we would not have the problem. 
+
+we have three threads with different priorities L (Low), M (Medium) and H (High). 
+
+Semaphores - PV operations
+
+Use cases for semaphores
+1. mutual exclusion (initial value = 1)
+2. scheduling constraints (initial value = 0)
+an example of 2 - thread join
+
+another example - producer-consumer with a bounded buffer
+
+there is need to synchronize the producer and consumer
+producer needs to wait if the buffer is full
+consumer needs to wait if the buffer is empty
+
+The rule of thumb is to use a separate semaphore for each constraint
+i.e., 
+
+semaphore fullSlots    //consumer's constraint
+semaphore emptySlots   //producer's constraint
+semaphore mutex    //mutual exclusion since only one can manipulate the buffer at a certain time
+
+problem of semaphores is that they are low-level
+1. They typically are used in pairs - what if one side does not get executed. 
+2. How do you prove the correctness of semaphore?
+
+A cleaner idea - use monitors for mutual exclusion and condition variables for scheduling constraints. 
+
+e.g., 
+
+Monitor - an object whose methods are implemented with mutual exclusion
+for example, in Java, put 'synchronized' keyword before all method decls
+
+Condition varaible - a variable x that implements, 
+x.wait()
+x.signal()
+many threads can call x.wait(), they will be queued up waiting for a call to x.signal(). That call will start the first waiting thread.
+
+Mesa vs. Hoare monitors
