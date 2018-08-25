@@ -69,3 +69,17 @@
 不过读这些东西让我对DNN的边界又有了一些新的认识。
 
 大家现在都关注微小扰动造成的攻击，但是其实微小还是不微小，其实重要性都差不多的。如果要用机器学习来构建全自动化的系统，即使是修改很大的样本也不可能依赖人去看，不然这不就成了个悖论。因为对于adversarial的样本，你也一样可以让人来看prediction是不是make sense。那还要模型干什么。。。
+
+发现这个领域的文献实在是太多了，再读几篇。
+
+###MagNet: a Two-Pronged Defense against Adversarial Examples
+一直在考虑那些perturbate比较严重的情况下，如何检测？
+本文给出了一种思路，即
+训练一个autoencoder，这个autoencoder捕捉到了正常数据的feature，然后用reconstruction error来estimate一个样本到manifold的距离。
+如果一个样本距离正常样本的manifold比较远，那么说明可能是对抗样本。
+但是实际上今年ICLR上, Dawn Song组的文章已经讨论过对抗样本的manifold问题，有的对抗样本距离正常样本的manifold实际上并不远。
+本文的另一个思路是，对于距离正常样本manifold比较远的样本，就用autoencoder重建的样本放到网络中得到softmax output。如果原样本与经过autoencoder重建的样本经过网络得到的softmax输出差异很大，则可能是对抗样本。
+文章并没有对这种方法给出详细的解释，可能更多是基于实验发现。
+
+本文还指出可以恢复正常样本的样子，这一点其实简单地对对抗样本增加随机扰动就可以很大概率恢复其正常label，至少我自己的实验发现对fgsm是很容易的。但是作者认为随机扰动没有利用正常样本本来的分布信息，因此提出在正常样本上训练一个autoencoder，然后对于对对抗样本，用autoencoder的输出来作为对其的恢复，因为autoencoder实际上是尽量把对抗样本向正常样本的方向推进了一些。
+
